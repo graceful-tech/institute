@@ -10,11 +10,15 @@ import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dy
 import { MessageService } from 'primeng/api';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
+import { LoginComponent } from './auth/login/login.component';
+import { CreateUserComponent } from './auth/create-user/create-user.component';
  
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    CreateUserComponent
 
   ],
   imports: [
