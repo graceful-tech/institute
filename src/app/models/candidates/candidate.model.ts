@@ -9,23 +9,12 @@ export interface Candidate {
     nationality: string;
     gender: string;
     languagesKnown: any;
-    fresher: boolean;
-    skills: any;
-    linkedIn:string;
     dob:any;
     address:any;
     maritalStatus:any;
-    coureName:any;
     parentContact:any;
-    mode:any;
-    batchPreference:any;
-    batchName:any;
-    batchDate:any;
-    counsellerName:any;
     location:any;
-    leadSource:any;
-    comments:any;
-    followUpStatus:any;
-    followUpDate:any;
+    qualification:any;
+    
 
 }

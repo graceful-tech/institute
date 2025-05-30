@@ -1,0 +1,59 @@
+<div class="p-dialog-content">
+    <div class="grid">
+        <div class="col-5">
+            <div class="border-right">
+                <form [formGroup]="commentForm">
+                    <div class="grid grid-nogutter">
+                        <div class="col-12">
+                            <div class="comment-wrapper">
+                                <textarea rows="5" type="text" pInputText formControlName="comment"></textarea>
+                            </div>
+                        </div>
+                        <div class="checkbox-flex mx-3">
+                            <div style="margin-top: 20px;">
+                                <p-checkbox class="checkbox" [binary]="true" label="Remind in Dashboard"
+                                    formControlName="commentReminder">
+                                </p-checkbox>
+                            </div>
+                        </div>
+                        <div class="checkbox-flex mx-3">
+                            <div class="comment-wrapper">
+                                <p-button [label]="dataLoaded ? 'Add Comment' : 'Adding..'"
+                                    [disabled]="commentForm.invalid" (onClick)="createComment()">
+                                </p-button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="pr-3">
+                <p-table [value]="comments" [scrollable]="true" scrollHeight="300px">
+                    <ng-template pTemplate="body" let-comment>
+                        <tr>
+                            <td>
+                                <div class="comment-wrapper">
+                                    <div class="user-name-wrapper">
+                                        <div class="user-name">{{ comment.userName }}</div>
+                                        <div class="comment-date">{{comment.createdDate | date : "MMM dd, yyyy hh:mm
+                                            aa"}}
+                                        </div>
+                                    </div>
+                                    <div class="comment">{{ comment.comment }}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="1">
+                                No comments added.
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>

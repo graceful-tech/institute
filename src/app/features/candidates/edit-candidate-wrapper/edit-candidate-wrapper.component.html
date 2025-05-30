@@ -1,0 +1,29 @@
+<div class="wrapper">
+    <div class="heading">
+        <span>
+            <i class="pi pi-arrow-left back-icon" onclick="history.back()"></i>
+            Edit Candidate
+        </span>
+    </div>
+    <div>
+        <div class="grid">
+            <div class="col-12">
+                <div class="hurecom-wrapper mr-2">
+                    <app-candidate-details (savedCandidate)="complete($event)"></app-candidate-details>
+                     <app-cource-details></app-cource-details>
+                </div>
+            </div>
+            
+            <div class="flex-end mt-3">
+             <p-button [label]="dataLoaded ? 'Submit' : 'Saving..'" (onClick)="saveCandidate()" [disabled]="!dataLoaded">
+             </p-button>
+            </div>
+
+            <div class="col-12">
+                <div class="hurecom-wrapper mt-2">
+                    <app-list-comment-wrapper></app-list-comment-wrapper>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

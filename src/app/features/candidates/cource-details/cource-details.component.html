@@ -1,0 +1,198 @@
+ 
+<app-institute-divider></app-institute-divider>
+<form [formGroup]="courseForm">
+  <div class="section-heading">Couse Details</div>
+  <div class="grid">
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Course Name</label>
+        <div class="input-wrapper">
+            <p-dropdown
+            [options]="courseNameList"
+            optionLabel="displayValue"
+            optionValue="dataValue"
+            placeholder="Select Course Name"
+            formControlName="courseName"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="courseForm.controls['courseName'].invalid && showError"
+      >
+        Course Name is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Mode</label>
+        <div class="input-wrapper">
+           <p-dropdown
+            [options]="modeList"
+            optionLabel="displayValue"
+            optionValue="dataValue"
+            placeholder="Select Mode"
+            formControlName="mode"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="courseForm.controls['mode'].invalid && showError"
+      >
+        Mode is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Batch Preference</label>
+        <div class="input-wrapper">
+          <p-dropdown
+            [options]="batchPreferenceList"
+            optionLabel="displayValue"
+            optionValue="dataValue"
+            placeholder="Select Batch Preference"
+            formControlName="batchPreference"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="courseForm.controls['batchPreference'].invalid && showError"
+      >
+        Batch Preference is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Batch Name</label>
+        <div class="input-wrapper">
+          <input type="text" pInputText formControlName="batchName" />
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="courseForm.controls['batchName'].invalid && showError"
+      >
+        Batch Name is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label>Batch Start Date</label>
+        <div class="input-wrapper">
+         <p-calendar formControlName="batchEndDate" placeholder="Select From Date"></p-calendar>
+
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="
+          courseForm.controls['batchStartDate'].invalid && showError
+        "
+      >
+        Batch Start Date is required</small
+      >
+    </div>
+
+     <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label>Batch End Date</label>
+        <div class="input-wrapper">
+         <p-calendar formControlName="batchEndDate" placeholder="Select To Date"></p-calendar>
+
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="
+          courseForm.controls['batchEndDate'].invalid && showError
+        "
+      >
+        Batch End Date is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Counsellor Name</label>
+        <div class="input-wrapper">
+          <input type="text" pInputText formControlName="counsellorName" />
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="courseForm.controls['counsellorName'].invalid && showError"
+      >
+        Counsellor Name is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Lead Source</label>
+        <div class="input-wrapper">
+          <input type="text" pInputText formControlName="LeadSource" />
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="courseForm.controls['LeadSource'].invalid && showError"
+      >
+      Lead Source is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">status</label>
+        <div class="input-wrapper">
+           <p-dropdown
+            [options]="statusList"
+            optionLabel="displayValue"
+            optionValue="dataValue"
+            placeholder="Select Status"
+            formControlName="status"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="courseForm.controls['status'].invalid && showError"
+      >
+      status is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label>Follow Up Date</label>
+        <div class="input-wrapper">
+         <p-calendar formControlName="followUpDate" placeholder="Select To Date"></p-calendar>
+
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="
+          courseForm.controls['followUpDate'].invalid && showError
+        "
+      >
+       Follow Up Date is required</small
+      >
+    </div>
+
+    
+  </div>
+
+  <app-institute-divider></app-institute-divider>
+    
+</form>

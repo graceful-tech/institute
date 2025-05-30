@@ -1,1 +1,23 @@
 
+<div class="wrapper">
+    <div class="heading">
+        <span>
+            <i class="pi pi-arrow-left back-icon" routerLink="/candidates"></i>
+            Create Candidate
+        </span>
+    </div>
+    <div class="hurecom-wrapper">
+        <app-candidate-details (savedCandidate)="complete($event)"></app-candidate-details>
+        <app-cource-details></app-cource-details>
+
+        <div class="col-12">
+            <div class="hurecom-wrapper mr-2 mt-2">
+                 <app-candidate-comment></app-candidate-comment>
+            </div>
+        </div>
+        <div class="flex-end mt-3">
+            <p-button [label]="dataLoaded ? 'Submit' : 'Saving..'" (onClick)="saveCandidate()" [disabled]="!dataLoaded">
+            </p-button>
+        </div>
+    </div>
+</div>

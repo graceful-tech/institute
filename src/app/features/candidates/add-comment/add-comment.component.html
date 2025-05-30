@@ -1,0 +1,19 @@
+<div class="p-dialog-content">
+    <form [formGroup]="commentForm">
+        <div class="grid grid-nogutter">
+            <div class="col-12">
+                <div class="field-wrapper">
+                    <label class="required">Comment</label>
+                    <div class="input-wrapper">
+                        <textarea rows="5" cols="30" pInputTextarea formControlName="comment"></textarea>
+                    </div>
+                </div>
+                <small class="error-message" *ngIf="commentForm.controls['comment'].invalid && showError">
+                    Comment is required</small>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="p-dialog-footer">
+    <p-button label="Add" (onClick)="createComment()"></p-button>
+</div>

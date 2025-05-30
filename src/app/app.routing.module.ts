@@ -4,6 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 
+  {
+    path: 'candidate',
+    loadChildren: () => import('./features/candidates/candidates.module').then((m) => m.CandidatesModule),
+  },
 ];
 
 @NgModule({

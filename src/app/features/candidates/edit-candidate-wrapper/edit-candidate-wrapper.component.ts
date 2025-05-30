@@ -5,29 +5,40 @@ import { ApiService } from '../../../services/api.service';
 import { GlobalService } from '../../../services/global.service';
 import { DatePipe } from '@angular/common';
 import { CourceDetailsComponent } from '../cource-details/cource-details.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-create-candidate',
+  selector: 'app-edit-candidate-wrapper',
   standalone: false,
-  templateUrl: './create-candidate.component.html',
-  styleUrl: './create-candidate.component.css'
+  templateUrl: './edit-candidate-wrapper.component.html',
+  styleUrl: './edit-candidate-wrapper.component.css'
 })
-export class CreateCandidateComponent {
+export class EditCandidateWrapperComponent {
  @ViewChild(CandidateDetailsComponent) candidateDetails!: CandidateDetailsComponent;
  @ViewChild(CandidateCommentComponent) candidateComment!: CandidateCommentComponent;
-@ViewChild(CourceDetailsComponent) candidateCourse!: CourceDetailsComponent;
+ @ViewChild(CourceDetailsComponent) candidateCourse!: CourceDetailsComponent;
   
   dataLoaded: boolean = true;
   candidateId: any;
 
-  constructor(private api: ApiService, private gs: GlobalService, private datePipe: DatePipe) { }
+  constructor(private route: ActivatedRoute,private api: ApiService, private gs: GlobalService, private datePipe: DatePipe) { }
 
   ngOnInit() {
+     this.route.paramMap.subscribe(param => {
+      this.gs.setCandidateId(param.get('id'));
+      this.candidateId = param.get('id');
+    });
+
     
   }
 
   ngAfterViewInit() {
-     
+      this.candidateDetails.candidateId = this.candidateId;
+      this.candidateDetails.getCandidateDetailsById();
+            
+      this.candidateCourse.candidateId = this.candidateId;
+      this.candidateCourse.getCourseDetailsByCandidateId();
+ 
   }
 
   
@@ -42,24 +53,16 @@ export class CreateCandidateComponent {
   }
 
   complete(event: any) {
-    this.dataLoaded = true;
+    
+   this.dataLoaded = true;
 
-    this.candidateCourse.candidateId = event.candidateId;
+   this.candidateCourse.candidateId = event.candidateId;
     this.candidateCourse.saveCourse();
-
-    this.candidateComment.candidateId = event.candidateId;
-    this.candidateComment.createComment();
     if (event.response == 'success') {
       this.candidateDetails.reset();
       this.gs.showToast('success', 'Candidate details saved successfully.');
     }
   }
 
-  canDeactivate(){
-    return new Promise((resolve, Reject) =>{
 
-      resolve(confirm('Are you sure want to leave this page ?'));
-
-    })
-  }
 }

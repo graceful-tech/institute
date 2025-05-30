@@ -11,6 +11,9 @@ import { LoginPopupComponent } from "./popup/login-popup/login-popup.component";
 import { MatIconModule } from '@angular/material/icon';
 import { HammerModule } from '@angular/platform-browser';
 import { InstituteDividerComponent } from "./components/institute-divider/institute-divider.component";
+import { ListCommentComponent } from "./components/list-comment/list-comment.component";
+import { CandidateDetailsComponent } from "./components/candidate-details/candidate-details.component";
+import { CandidateCommentComponent } from "./components/candidate-comment/candidate-comment.component";
   
  
  
@@ -19,7 +22,10 @@ import { InstituteDividerComponent } from "./components/institute-divider/instit
    ClickedOutsideDirective,
    MessageComponent,
    LoginPopupComponent ,
-   InstituteDividerComponent  
+   InstituteDividerComponent,
+   ListCommentComponent,
+   CandidateDetailsComponent,
+   CandidateCommentComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +48,10 @@ import { InstituteDividerComponent } from "./components/institute-divider/instit
     LoginPopupComponent,
     MatIconModule,
     NgxUiLoaderModule,
-    InstituteDividerComponent
+    InstituteDividerComponent,
+    ListCommentComponent,
+    CandidateDetailsComponent,
+    CandidateCommentComponent
   ]
 })
 export class SharedModule { }

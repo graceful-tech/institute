@@ -1,0 +1,34 @@
+.user-name {
+    color: #44546f;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.comment-date {
+    margin-left: 1rem;
+    color: #626f86;
+}
+
+.user-name-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.heading {
+    font-size: 1.1rem;
+    color: #323a45;
+}
+
+.comment-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.border-right {
+    padding-right: 1.5rem;
+    border-right: 1px dashed #e5e7eb;
+}
+
+.comment {
+    padding-top: 0.5rem;
+}

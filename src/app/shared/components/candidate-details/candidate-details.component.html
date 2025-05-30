@@ -1,0 +1,161 @@
+<span *ngIf="loaderImagePreview !== null">
+  <ngx-ui-loader
+  fgsColor="#64748B"
+  [fgsSize]="40"
+  [logoUrl]="loaderImagePreview"
+  [logoSize]="100"
+  [pbColor]="'#ffffff'"
+  [pbThickness]="0"
+  [overlayColor]="'rgba(186,35,35,0)'">
+  <div ngxUiLoaderBlurred [blur]="0">
+  </div>
+  <ngx-ui-loader></ngx-ui-loader>
+</ngx-ui-loader>
+<div>
+ 
+</div>
+<app-institute-divider></app-institute-divider>
+<form [formGroup]="candidateForm">
+  <div class="section-heading">Personal Details</div>
+  <div class="grid">
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Mobile Number</label>
+        <div class="input-wrapper">
+          <input
+            type="text"
+            pKeyFilter="int"
+            [maxlength]="10"
+            pInputText
+            formControlName="mobileNumber"
+            (blur)="getCandidateDetailsByMobileNumber()"
+          />
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="candidateForm.controls['mobileNumber'].invalid && showError"
+      >
+        Mobile Number is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Candidate Name</label>
+        <div class="input-wrapper">
+          <input type="text" pInputText formControlName="name" />
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="candidateForm.controls['name'].invalid && showError"
+      >
+        Candidate Name is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Email</label>
+        <div class="input-wrapper">
+          <input type="text" pInputText formControlName="email" />
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="candidateForm.controls['email'].invalid && showError"
+      >
+        Email is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Gender</label>
+        <div class="input-wrapper">
+          <p-dropdown
+            [options]="genderList"
+            optionLabel="displayValue"
+            optionValue="dataValue"
+            placeholder="Select Gender"
+            formControlName="gender"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="candidateForm.controls['gender'].invalid && showError"
+      >
+        Gender is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label>Alt Mobile Number</label>
+        <div class="input-wrapper">
+          <input
+          type="text"
+          pKeyFilter="int"
+          [maxlength]="10"
+          pInputText
+            formControlName="alternateMobileNumber"
+          />
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="
+          candidateForm.controls['alternateMobileNumber'].invalid && showError
+        "
+      >
+        Alt Mobile Number is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Qualification</label>
+        <div class="input-wrapper">
+          <input type="text" pInputText formControlName="qualification" />
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="candidateForm.controls['qualification'].invalid && showError"
+      >
+        Qualification is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3" *ngIf="display('languagesKnown')">
+      <div class="field-wrapper">
+        <label [ngClass]="{ required: isRequired('languagesKnown') }"
+          >Languages Known</label
+        >
+        <div class="input-wrapper">
+          <p-multiSelect
+            [options]="languages"
+            defaultLabel="Select Languages"
+            [showHeader]="false"
+            optionLabel="displayValue"
+            optionValue="dataValue"
+            formControlName="languagesKnown"
+          >
+          </p-multiSelect>
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="candidateForm.controls['languagesKnown'].invalid && showError"
+      >
+        Languages Known is required</small
+      >
+    </div>
+  </div>
+
+  <app-institute-divider></app-institute-divider>
+    
+</form>
