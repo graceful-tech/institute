@@ -29,7 +29,7 @@ export class CandidateDetailsComponent {
   candidateForm!: FormGroup;
   genderList: Array<ValueSet> = [];
   languages: Array<ValueSet> = [];
-  noticePeriodList: Array<ValueSet> = [];
+  maritalStatus: Array<ValueSet> = [];
   candidateId: any;
   showError: boolean = false;
   mobileNumbers: Array<String> = [];
@@ -57,7 +57,7 @@ export class CandidateDetailsComponent {
     this.createCandidateForm();
     this.getGenderList();
     this.getLanguages();
-    this.getNoticePeriodList();
+    this.getMaritalStatusList();
     this.getFieldDetails();
 
   
@@ -101,14 +101,15 @@ export class CandidateDetailsComponent {
         Validators.compose([Validators.required, Validators.minLength(10)]),
       ],
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      gender: ['', Validators.required],
-      languagesKnown: [[]],
-      qualification: ['', Validators.required],
+      gender: [''],
+      languagesKnown: [''],
+      qualification: [''],
       parentContact:[''],
       address:[''],
       location:[''],
       maritalStatus:[''],
-      nationality:[''],
+      nationality:['']
+      
     });
   }
 
@@ -171,12 +172,12 @@ export class CandidateDetailsComponent {
     });
   }
 
-  getNoticePeriodList() {
+  getMaritalStatusList() {
     const route = 'value-sets/search-by-code';
     const postData = { valueSetCode: 'NOTICE_PERIOD' };
     this.api.retrieve(route, postData).subscribe({
       next: (response) => {
-        this.noticePeriodList = response;
+        this.maritalStatus = response;
       },
     });
   }
@@ -259,14 +260,14 @@ export class CandidateDetailsComponent {
 
   saveCandidate() {
     this.ngxLoader.start();
-    const route = 'candidates/create';
+    const route = 'candidate/create';
     const payload = this.candidateForm.getRawValue();
 
     
 
-     if (Object.is(payload.languagesKnown, '')) {
-      payload.languagesKnown = '';
-    }
+    //  if (Object.is(payload.languagesKnown, '')) {
+    //   payload.languagesKnown = '';
+    // }
 
     this.api.create(route, payload).subscribe({
       next: (response) => {

@@ -1,11 +1,8 @@
-
 import { HttpClient, HttpContext, HttpContextToken, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-
-
-
+ 
 export const IS_GLOBAL_REQUEST = new HttpContextToken<boolean>(() => false);
 export const IS_APPLY_JOB_REQUEST = new HttpContextToken<boolean>(() => false);
 
@@ -13,9 +10,6 @@ export const IS_APPLY_JOB_REQUEST = new HttpContextToken<boolean>(() => false);
   providedIn: 'root'
 })
 export class ApiService {
-  put(route: string, user: any) {
-    throw new Error('Method not implemented.');
-  }
 
   constructor(private http: HttpClient) { }
 
@@ -57,7 +51,7 @@ export class ApiService {
   }
 
   public export(route: String, body: any): Observable<any> {
-    return this.http.post(this.createCompleteRoute(route), body,{ responseType: 'blob', reportProgress: true });
+    return this.http.post(this.createCompleteRoute(route), body, { responseType: 'blob', reportProgress: true });
   }
 
   public upload(route: String, body: any): Observable<any> {
@@ -68,24 +62,16 @@ export class ApiService {
     return this.http.post(this.createCompleteRoute(route), body);
   }
 
-  public getFromprofile(route: String) {
+  public getFromHurecom(route: String) {
     return this.http.get(this.createCompleteRoute(route), this.setGlobalRequestContext());
   }
 
-  public retrieveFromMakeProfile(route: String, body: any) {
+  public retrieveFromHurecom(route: String, body: any) {
     return this.http.post(this.createCompleteRoute(route), body, this.setGlobalRequestContext());
-  }
-
-  public createGoogleUser(route: string, body: any) {
-    return this.http.post(this.createCompleteRoute(route), body, this.generateHeaders());
   }
 
   public apply(route: String, body: any, username: string, tenant: string) {
     return this.http.post(this.createCompleteRoute(route), body, this.setApplyJobRequestContext(username, tenant));
-  }
-
-  public getImage(route: String) {
-    return this.http.post(this.createCompleteRoute(route), this.generateHeaders(),{ responseType: 'blob', reportProgress: true });
   }
 
   private createCompleteRoute(route: String) {
@@ -94,21 +80,10 @@ export class ApiService {
   }
 
   private generateHeaders() {
-    const token = sessionStorage.getItem('token');
-    const userName = sessionStorage.getItem('userName');
-    const id = sessionStorage.getItem('userId');
-
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    if (token) {
-      headers = headers.set('Authorization', `Bearer ${token}`);
-      headers = headers.set('userName', String(userName));
-      headers = headers.set('userId', String(id));
-    }
-
-    return { headers };
+    return {
+      headers: new HttpHeaders({ 'content-type': 'application/json' })
+    };
   }
-
 
   private setGlobalRequestContext() {
     return {

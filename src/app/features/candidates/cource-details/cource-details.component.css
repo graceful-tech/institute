@@ -1,0 +1,27 @@
+.fresher-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.fresher-checkbox label {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    color: #2e3234;
+    font-weight: 400;
+}
+
+.field-label {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 0.5rem;
+    height: 100%;
+}
+
+.field-wrapper {
+    padding: 0rem 0.5rem;
+}
+
+.error-message {
+    padding-left: 0.5rem;
+}

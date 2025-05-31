@@ -40,6 +40,7 @@ export class CourceDetailsComponent {
 
   ngOnInit() {
     this.createcourseForm();
+    
     this.getGenderList();
     this.getLanguages();
     this.getModeList();
@@ -57,7 +58,8 @@ export class CourceDetailsComponent {
       courseName: [''],
       mode: [''],
       batchName: [''],
-      batchDate: [''],
+      batchEndDate: [''],
+      batchStartDate: [''],
       batchPreference: [''],
       counsellorName:[''],
       leadSource:[''],

@@ -6,12 +6,15 @@
             Create Candidate
         </span>
     </div>
-    <div class="hurecom-wrapper">
+    <div class="profile-wrapper">
         <app-candidate-details (savedCandidate)="complete($event)"></app-candidate-details>
+      
+        <app-institute-divider></app-institute-divider>
+        
         <app-cource-details></app-cource-details>
 
         <div class="col-12">
-            <div class="hurecom-wrapper mr-2 mt-2">
+            <div class="profile-wrapper mr-2 mt-2">
                  <app-candidate-comment></app-candidate-comment>
             </div>
         </div>

@@ -8,6 +8,7 @@ import { ListCommentWrapperComponent } from './list-comment-wrapper/list-comment
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { CourceDetailsComponent } from './cource-details/cource-details.component';
 import { EditCandidateWrapperComponent } from './edit-candidate-wrapper/edit-candidate-wrapper.component';
+import { ListCandidatesComponent } from './list-candidates/list-candidates.component';
  
 
 
@@ -17,7 +18,8 @@ import { EditCandidateWrapperComponent } from './edit-candidate-wrapper/edit-can
     ListCommentWrapperComponent,
     AddCommentComponent,
     CourceDetailsComponent,
-    EditCandidateWrapperComponent
+    EditCandidateWrapperComponent,
+    ListCandidatesComponent
 
   ],
   imports: [

@@ -12,6 +12,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { LoginComponent } from './auth/login/login.component';
 import { CreateUserComponent } from './auth/create-user/create-user.component';
+import { LayoutModule } from "./layout/layout.module";
  
 
 @NgModule({
@@ -27,8 +28,9 @@ import { CreateUserComponent } from './auth/create-user/create-user.component';
     SharedModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
-  ],
+    FormsModule,
+    LayoutModule
+],
   providers: [
     DialogService,
     MessageService,

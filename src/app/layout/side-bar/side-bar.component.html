@@ -1,0 +1,36 @@
+<div class="side-bar-wrapper">
+	<div class="side-bar">
+		<div class="side-bar-dark">
+			<div class="side-bar-container custom-scroll">
+				<ng-container *ngIf="panel == 'HOME'">
+					<ul>
+						<li class="menu-item" routerLink="/dashboard" pTooltip="Dashboard"
+							(click)="gs.setPanel('HOME')">
+							<a class="menu-link" routerLinkActive="menu-active">
+								<i class="pi pi-home menu-icon"></i>
+							</a>
+						</li>
+						<li   class="menu-item" routerLink="/candidates"
+							pTooltip="Candidates">
+							<a class="menu-link" routerLinkActive="menu-active" [routerLinkActiveOptions]="{exact:
+                                false}">
+								<i class="pi pi-user menu-icon"></i>
+							</a>
+						</li>
+						<li   class="menu-item" routerLink="/users"
+							pTooltip="My Candidates">
+							<a class="menu-link" routerLinkActive="menu-active" [routerLinkActiveOptions]="{exact:
+                                false}">
+								<i class="pi pi-upload menu-icon"></i>
+							</a>
+						</li>
+						 
+						 
+						 
+						 
+					</ul>
+				</ng-container>
+			</div>
+		</div>
+	</div>
+</div>

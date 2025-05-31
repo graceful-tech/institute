@@ -6,6 +6,10 @@ import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
 
+  {
+    path: 'candidates',
+    loadChildren: () => import('./features/candidates/candidates.module').then((m) => m.CandidatesModule),
+  },
 ];
 
 @NgModule({

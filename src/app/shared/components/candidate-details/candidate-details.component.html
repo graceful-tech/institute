@@ -1,20 +1,4 @@
-<span *ngIf="loaderImagePreview !== null">
-  <ngx-ui-loader
-  fgsColor="#64748B"
-  [fgsSize]="40"
-  [logoUrl]="loaderImagePreview"
-  [logoSize]="100"
-  [pbColor]="'#ffffff'"
-  [pbThickness]="0"
-  [overlayColor]="'rgba(186,35,35,0)'">
-  <div ngxUiLoaderBlurred [blur]="0">
-  </div>
-  <ngx-ui-loader></ngx-ui-loader>
-</ngx-ui-loader>
-<div>
- 
-</div>
-<app-institute-divider></app-institute-divider>
+
 <form [formGroup]="candidateForm">
   <div class="section-heading">Personal Details</div>
   <div class="grid">
@@ -94,24 +78,24 @@
 
     <div class="col-12 md:col-6 lg:col-3">
       <div class="field-wrapper">
-        <label>Alt Mobile Number</label>
+        <label>Parent Contact</label>
         <div class="input-wrapper">
           <input
           type="text"
           pKeyFilter="int"
           [maxlength]="10"
           pInputText
-            formControlName="alternateMobileNumber"
+            formControlName="parentContact"
           />
         </div>
       </div>
       <small
         class="error-message"
         *ngIf="
-          candidateForm.controls['alternateMobileNumber'].invalid && showError
+          candidateForm.controls['parentContact'].invalid && showError
         "
       >
-        Alt Mobile Number is required</small
+        Parent contact is required</small
       >
     </div>
 
@@ -129,7 +113,7 @@
         Qualification is required</small
       >
     </div>
-
+<!-- 
     <div class="col-12 md:col-6 lg:col-3" *ngIf="display('languagesKnown')">
       <div class="field-wrapper">
         <label [ngClass]="{ required: isRequired('languagesKnown') }"
@@ -152,6 +136,72 @@
         *ngIf="candidateForm.controls['languagesKnown'].invalid && showError"
       >
         Languages Known is required</small
+      > 
+    </div>-->
+
+     
+
+
+     <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Marital Status</label>
+        <div class="input-wrapper">
+          <p-dropdown
+            [options]="maritalStatus"
+            optionLabel="displayValue"
+            optionValue="dataValue"
+            placeholder="Select Gender"
+            formControlName="maritalStatus"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="candidateForm.controls['maritalStatus'].invalid && showError"
+      >
+        Marital Status is required</small
+      >
+    </div>
+
+    
+
+
+     <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Location</label>
+        <div class="input-wrapper">
+          <p-dropdown
+            [options]="genderList"
+            optionLabel="displayValue"
+            optionValue="dataValue"
+            placeholder="Select Gender"
+            formControlName="location"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="candidateForm.controls['location'].invalid && showError"
+      >
+        Location is required</small
+      >
+    </div>
+
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Address</label>
+        <div class="input-wrapper">
+          <input type="text" pInputText formControlName="address" />
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="candidateForm.controls['address'].invalid && showError"
+      >
+        Address is required</small
       >
     </div>
   </div>

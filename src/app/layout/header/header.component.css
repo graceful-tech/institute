@@ -1,0 +1,262 @@
+.header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    /* width: calc(100% - 5rem); */
+    box-shadow: 0 1px 2px 0 rgb(0 0 0/8%);
+}
+
+.header {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.organization-name {
+    font-weight: 500;
+    margin-left: 1rem;
+}
+
+.logout {
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 2rem;
+}
+
+.user {
+    font-size: 16px;
+}
+
+.account-wrapper {
+    position: relative;
+    cursor: pointer;
+    margin-right: 5.5rem;
+}
+
+.account-menu {
+    position: absolute;
+    background: #fff;
+    padding: 0;
+    min-width: 250px;
+    right: 0;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0/8%);
+    border-radius: 5px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.menu-item {
+    text-decoration: none;
+    list-style-type: none;
+    color: #474749;
+    padding: 0.5rem 1rem;
+}
+
+.menu-icon {
+    font-size: 1rem;
+    color: #474749;
+    margin-right: 0.5rem;
+}
+
+.divider {
+    border-top: 1px dashed #eee;
+}
+
+.account-menu {
+    display: none;
+}
+
+.account-wrapper.show-account-menu .account-menu {
+    display: block;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+}
+
+.menu-item:hover {
+    background: #2196F3;
+    color: #fff;
+    cursor: pointer;
+}
+
+.menu-item:hover i {
+    color: #fff;
+}
+
+.user-name {
+    text-transform: capitalize;
+    margin-left: 0.5rem;
+    color: #515c66;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.role-wrapper {
+    margin-bottom: 0.5rem;
+}
+
+.role {
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.role-item {
+    text-decoration: none;
+    list-style-type: none;
+    color: #474749;
+    padding: 0.5rem 1rem;
+    cursor: default;
+}
+
+.quick-candidate {
+    cursor: pointer;
+    color: #2196F3;
+    font-weight: 500;
+}
+
+.first-letter {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: #EFF2F7;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 0.8rem;
+    color: #515c66;
+}
+
+
+.first-letter-flex {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    width: 100%;
+}
+
+.side-bar-header {
+    background: #ffffff;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.logo {
+    width: 130px;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.today {
+    position: absolute;
+    right: 0;
+}
+
+.today-button {
+    border: none;
+    background: #64748A;
+    color: #fff;
+    padding: 0.3rem 0.5rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+
+/* .icon-large {
+    font-size: 30px; 
+  }   */
+.icon-blue {
+    color: rgb(20, 63, 192);
+  }
+.user-icon {
+    position: relative;
+    display: inline-block;
+    font-size: 28px;  
+  }
+.icon-container {
+    position: relative;
+    display: inline-block; 
+   
+}
+.chain-icon {
+    position: absolute;
+    top: 90%;  
+    left: 40%;  
+    transform: translate(-50%, -50%);  
+    font-size: 0.8rem; 
+}
+.p-dropdown {
+    border-color: snow !important;
+}
+
+.timeout {
+    position: fixed;  
+    top: 0;
+    left: 0;
+    width: 100%;  
+    height: 100%;  
+    background-color: rgba(0, 0, 0, 0.7);  
+    color: white;
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    z-index: 9999;  
+    font-size: 24px;  
+    text-align: center;
+    padding: 20px;
+    flex-direction: column;  
+}
+
+.timeout p {
+    margin: 0;  
+    display: block;  
+    width: 100%;  
+}
+
+.stop-timer {
+    margin-top: 20px;  
+    cursor: pointer; 
+    display: inline-block;  
+    padding: 10px 20px;  
+    background-color: #007bff;  
+    color: white;  
+    border: none;  
+    border-radius: 5px;  
+    transition: background-color 0.3s; 
+    text-align: center; 
+}
+
+.stop-timer:hover {
+    background-color: #0056b3;  
+}
+
+
+.task-button {
+    border: none;
+    background: #3c843f;
+    color: #fff;
+    padding: 0.3rem 0.5rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}

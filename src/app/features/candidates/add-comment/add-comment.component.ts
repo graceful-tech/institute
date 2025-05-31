@@ -7,6 +7,7 @@ import { GlobalService } from '../../../services/global.service';
 
 @Component({
   selector: 'app-add-comment',
+  standalone:false,
   templateUrl: './add-comment.component.html',
   styleUrls: ['./add-comment.component.css']
 })

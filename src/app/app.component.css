@@ -1,0 +1,151 @@
+.content {
+    margin-left: 6rem;
+    padding: 1.5rem;
+    padding-top: 2.5rem;
+}
+
+.header {
+    margin-left: 6rem;
+}
+
+.summary,
+.detail,
+.last-comment,
+.follow-button {
+    padding: 0.3rem;
+    margin: 0;
+}
+
+.summary {
+    font-weight: 500;
+}
+
+.date {
+    padding: 0.5rem 1.2rem;
+    border-radius: 10px;
+    color: #141b2b;
+    background: #F5F6F8;
+}
+
+.time {
+    font-weight: 500;
+}
+
+.event {
+    color: #212121;
+    padding-left: 1rem;
+    margin: 1rem 0.5rem;
+    flex: 1;
+}
+
+.status {
+    font-weight: 500;
+    padding-bottom: 0.4rem;
+}
+
+.client {
+    color: #74788d;
+}
+
+.event-icon {
+    font-size: 20px;
+}
+
+.banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #2196F3;
+    color: #fff;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-banner {
+    margin-left: 1rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+
+.notification-wrapper {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+
+.notification-line1,
+.notification-line2 {
+    padding-bottom: 0.5rem;
+}
+
+.notification-line1 {
+    font-weight: 500;
+    font-size: 16px;
+    color: #009688;
+}
+
+.notification-wrapper .status,
+.notification-wrapper .call-back {
+    background: #F5F6F8;
+    color: #141b2b;
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    margin-right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;  
+    height: 100%;  
+}
+
+.table-wrapper {
+    overflow: auto;  
+}
+
+.table-large {
+    flex: 1; 
+}
+
+.table-small {
+    flex: 1;  
+}
+.table-heading {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;  
+}
+
+.top-right-btn {
+    position: absolute;
+    top: 10px;  
+    right: 10px;  
+   
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-heading {
+    margin: 0;
+    text-align: left;
+}

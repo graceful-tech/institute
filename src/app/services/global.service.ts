@@ -46,6 +46,12 @@ export class GlobalService {
   private resumeName = new BehaviorSubject(null);
   public resumeName$ = this.resumeName.asObservable();
 
+  private sidebar = new BehaviorSubject(false);
+  public sidebar$ = this.sidebar.asObservable();
+
+   private taskbar = new BehaviorSubject(false);
+  public taskbar$ = this.taskbar.asObservable();
+
 
 
   todayEvents: Array<any> = [];
@@ -112,8 +118,16 @@ export class GlobalService {
     this.candidateImage.next(data);
   }
 
+   public setSidebar(data: boolean) {
+    this.sidebar.next(data);
+  }
+
   public setResumeName(data: any) {
     this.resumeName.next(data);
+  }
+
+   public setTaskbar(data: boolean) {
+    this.taskbar.next(data);
   }
 
   showMessage(status: string, message: string) {
