@@ -24,28 +24,27 @@ export class CandidateCommentComponent {
   ngOnInit() {
     this.createCommentForm();
     this.getComments();
-    this.getCommentReminder();
+  
   }
 
   createCommentForm() {
     this.commentForm = this.fb.group({
       comment: ['', Validators.required],
-      commentReminder: [false],
     });
   }
 
   createComment() {
     this.dataLoaded = false;
     const route = 'comments/create';
-    const postData = this.commentForm.value;
-    postData['appliedJobId'] = this.candidateId;
-
-    this.api.create(route, postData).subscribe({
+    const payload = this.commentForm.value;
+    payload['candidateId'] = this.candidateId;
+   
+    
+   
+    this.api.create(route, payload).subscribe({
       next: (response) => {
         this.dataLoaded = true;
         this.commentForm.reset();
-        this.getComments();
-        this.gs.showToast('success', response.message);
       },
       error: (error) => {
         this.dataLoaded = true;
@@ -56,7 +55,7 @@ export class CandidateCommentComponent {
 
   getComments() {
     const route = 'comments';
-    const postData = { appliedJobId: this.candidateId };
+    const postData = { candidateId: this.candidateId };
     this.api.retrieve(route, postData).subscribe({
       next: (response: any) => {
         this.comments = response?.results as Array<any>;

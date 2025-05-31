@@ -150,7 +150,7 @@
             [options]="maritalStatus"
             optionLabel="displayValue"
             optionValue="dataValue"
-            placeholder="Select Gender"
+            placeholder="Select Marital Status"
             formControlName="maritalStatus"
           >
           </p-dropdown>
@@ -163,22 +163,12 @@
         Marital Status is required</small
       >
     </div>
-
-    
-
-
+ 
      <div class="col-12 md:col-6 lg:col-3">
       <div class="field-wrapper">
         <label class="required">Location</label>
         <div class="input-wrapper">
-          <p-dropdown
-            [options]="genderList"
-            optionLabel="displayValue"
-            optionValue="dataValue"
-            placeholder="Select Gender"
-            formControlName="location"
-          >
-          </p-dropdown>
+          <input type="text" pInputText formControlName="location" />
         </div>
       </div>
       <small

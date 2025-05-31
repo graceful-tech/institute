@@ -42,7 +42,7 @@
                             <div class="input-wrapper">
                                 <p-dropdown [options]="modeList" optionLabel="displayValue"
                                     optionValue="dataValue" placeholder="Select Mode"
-                                    formControlName="batchPreference">
+                                    formControlName="mode">
                                 </p-dropdown>
                             </div>
                         </div>
@@ -61,18 +61,17 @@
                     <div class="col-12 md:col-6 lg:col-2">
                         <div class="field-wrapper">
                             <div class="input-wrapper">
-                                <p-calendar formControlName="fromDate" placeholder="Select Joining Date">
+                                <p-calendar formControlName="batchStartDate" placeholder="Select Joining Date">
                                 </p-calendar>
                             </div>
                         </div>
                     </div>  
 
-                    <div class="col-12 md:col-6 lg:col-2">
+                    <div class="col-12 md:col-6 lg:col-2 flex justify-content-end">
                         <div class="field-wrapper">
-                            <div class="input-wrapper">
+                            <div class="input-wrapper"  >
                                 <p-button class="mr-1" label="Create" styleClass="p-button-primary"
                                  (onClick)="createCandidate()">
-                                     
                                 </p-button>
                             </div>
                         </div>
@@ -83,12 +82,10 @@
 
 
        <div>
+    <app-institute-divider></app-institute-divider>
     <p-table [value]="candidateDetails"  [lazy]="true">
         <ng-template pTemplate="header">
             <tr>
-                <th style="width: 1rem">
-                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                </th>
                 <th>CANDIDATE DETAILS</th>
                 <th>COURSE DETAILS</th>
                 <th>PAYMENT DETAILS</th>
@@ -164,30 +161,30 @@
                 </td>
                 <td class="no-border">
                   
-                <span class="pi pi-pencil edit" *ngIf = "candidate.active === false" (click)="onClickOnEdit(candidate?.id)">
+                <span class="pi pi-pencil edit"  (click)="onClickOnEdit(candidate?.id)">
                    </span>
                 </td>
 
             </tr>
             <tr *ngIf="dataLoaded">
             
-               <td colspan="1" class="row-footer">
+               <!-- <td colspan="1" class="row-footer">
                     <div class="flex-start">
                         <label class="pr-2">LAST COMMENT:</label>
                         <div class="pr-2">
                             <i *ngIf="candidate.comment" class="pi pi-info-circle" [pTooltip]="candidate.comment"></i>
                         </div>
                     </div>
-                </td>
+                </td> -->
 
-                <td colspan="1" class="row-footer">
+                <!-- <td colspan="1" class="row-footer">
                     <div class="flex-start">
                         <label class="pr-2">OWNED BY:</label>
                         <div class="pr-2">
                             {{ candidate.ownedUser }}
                         </div>
                     </div>
-                </td>
+                </td> -->
             </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">

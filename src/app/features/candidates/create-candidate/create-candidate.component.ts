@@ -43,9 +43,12 @@ export class CreateCandidateComponent {
 
   complete(event: any) {
     this.dataLoaded = true;
-
-    this.candidateCourse.candidateId = event.candidateId;
-    this.candidateCourse.saveCourse();
+    if(event.response == 'success'){
+    
+      // if (this.candidateCourse.courseForm.valid) {
+         this.candidateCourse.candidateId = event.candidateId;
+         this.candidateCourse.saveCourse();
+      //  }
 
     this.candidateComment.candidateId = event.candidateId;
     this.candidateComment.createComment();
@@ -53,6 +56,7 @@ export class CreateCandidateComponent {
       this.candidateDetails.reset();
       this.gs.showToast('success', 'Candidate details saved successfully.');
     }
+  }
   }
 
   canDeactivate(){

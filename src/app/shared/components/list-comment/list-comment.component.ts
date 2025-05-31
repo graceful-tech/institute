@@ -28,8 +28,7 @@ export class ListCommentComponent {
 
   createCommentForm() {
     this.commentForm = this.fb.group({
-      comment: ['', Validators.required],
-      commentReminder: [false],
+      comment: ['', Validators.required]
     });
   }
 
@@ -37,7 +36,7 @@ export class ListCommentComponent {
     this.dataLoaded = false;
     const route = 'comments/create';
     const postData = this.commentForm.value;
-    postData['appliedJobId'] = this.candidateId;
+    postData['candidateId'] = this.candidateId;
 
     this.api.create(route, postData).subscribe({
       next: response => {
@@ -55,7 +54,7 @@ export class ListCommentComponent {
 
   getComments() {
     const route = 'comments';
-    const postData = { appliedJobId: this.candidateId }
+    const postData = { candidateId: this.candidateId }
     this.api.retrieve(route, postData).subscribe({
       next: (response: any) => {
         this.comments = response?.results as Array<any>;

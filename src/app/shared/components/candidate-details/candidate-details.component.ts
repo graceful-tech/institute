@@ -137,7 +137,7 @@ export class CandidateDetailsComponent {
   getCandidateDetailsById() {
     this.ngxLoader.start();
     if (this.candidateId) {
-      const route = `candidates/${this.candidateId}`;
+      const route = `candidate/${this.candidateId}`;
       this.api.get(route).subscribe({
         next: (response) => {
           const candidate = response as Candidate;
@@ -174,7 +174,7 @@ export class CandidateDetailsComponent {
 
   getMaritalStatusList() {
     const route = 'value-sets/search-by-code';
-    const postData = { valueSetCode: 'NOTICE_PERIOD' };
+    const postData = { valueSetCode: 'MARTIAL_STATUS' };
     this.api.retrieve(route, postData).subscribe({
       next: (response) => {
         this.maritalStatus = response;
@@ -193,25 +193,20 @@ export class CandidateDetailsComponent {
   }
 
   getCandidateDetailsByMobileNumber() {
-    this.ngxLoader.start();
+    
     if (this.currentRequest) {
       this.currentRequest.unsubscribe();
     }
-    const route = 'candidates/search-by-mobile-number';
+    const route = 'candidate/search-by-mobile-number';
     const postData = { mobileNumber: this.candidateForm.value.mobileNumber };
     this.currentRequest = this.api.retrieve(route, postData).subscribe({
       next: (response) => {
-        const candidate = response as Candidate;
-
-        if (candidate) {
-          this.candidateId = candidate.id;
-          this.patchCandidateForm(candidate);
-
-          this.candidateForm.controls['mobileNumber'].enable();
-        }
-
-        this.patchCandidateFormWithResumeDetails();
-
+        
+    
+      },
+      error: (error) => {
+        this.gs.showMessage('Error', 'Candidate Already Exits');
+        // this.savedCandidate.emit({ response: 'error' });
         this.ngxLoader.stop();
       },
     });
@@ -263,7 +258,31 @@ export class CandidateDetailsComponent {
     const route = 'candidate/create';
     const payload = this.candidateForm.getRawValue();
 
-    
+    //  if (Object.is(payload.languagesKnown, '')) {
+    //   payload.languagesKnown = '';
+    // }
+
+    this.api.create(route, payload).subscribe({
+      next: (response) => {
+        this.candidateId = response;
+        this.savedCandidate.emit({
+          response: 'success',
+          candidateId: this.candidateId,
+        });
+        this.ngxLoader.stop();
+      },
+      error: (error) => {
+        this.gs.showMessage('Error', 'Error in Creating Candidate');
+        // this.savedCandidate.emit({ response: 'error' });
+        this.ngxLoader.stop();
+      },
+    });
+  }
+
+  updateCandidate() {
+    this.ngxLoader.start();
+    const route = 'candidate/update';
+    const payload = this.candidateForm.getRawValue();
 
     //  if (Object.is(payload.languagesKnown, '')) {
     //   payload.languagesKnown = '';
@@ -279,8 +298,8 @@ export class CandidateDetailsComponent {
         this.ngxLoader.stop();
       },
       error: (error) => {
-        this.gs.showMessage(error.error?.status, error.error?.message);
-        this.savedCandidate.emit({ response: 'error' });
+        this.gs.showMessage('Error', 'Error in Creating Candidate');
+        // this.savedCandidate.emit({ response: 'error' });
         this.ngxLoader.stop();
       },
     });
@@ -298,33 +317,33 @@ export class CandidateDetailsComponent {
       let mobileNumber = this.resumeDetails.find(
         (resume: any) => resume.key == 'MobileNo'
       )?.values;
-      let alternateMobileNumber = this.resumeDetails.find(
-        (resume: any) => resume.key == 'AlternateMobileNo'
-      )?.values;
-      let skills = this.resumeDetails.find(
-        (resume: any) => resume.key == 'skills'
-      )?.values;
-      skills = skills.split(',');
+      // let alternateMobileNumber = this.resumeDetails.find(
+      //   (resume: any) => resume.key == 'AlternateMobileNo'
+      // )?.values;
+      // let skills = this.resumeDetails.find(
+      //   (resume: any) => resume.key == 'skills'
+      // )?.values;
+      // skills = skills.split(',');
 
       if (mobileNumber) {
         mobileNumber = mobileNumber?.replace(/\s/g, '').substr(-10);
       }
 
-      if (alternateMobileNumber) {
-        alternateMobileNumber = alternateMobileNumber
-          ?.replace(/\s/g, '')
-          .substr(-10);
-      }
+      // if (alternateMobileNumber) {
+      //   alternateMobileNumber = alternateMobileNumber
+      //     ?.replace(/\s/g, '')
+      //     .substr(-10);
+      // }
 
       if (!this.candidateForm.value.mobileNumber) {
         this.candidateForm.controls['mobileNumber'].setValue(mobileNumber);
       }
 
-      if (!this.candidateForm.value.alternateMobileNumber) {
-        this.candidateForm.controls['alternateMobileNumber'].setValue(
-          alternateMobileNumber
-        );
-      }
+      // if (!this.candidateForm.value.alternateMobileNumber) {
+      //   this.candidateForm.controls['alternateMobileNumber'].setValue(
+      //     alternateMobileNumber
+      //   );
+      // }
 
       if (!this.candidateForm.value.name) {
         this.candidateForm.controls['name'].setValue(
@@ -340,9 +359,9 @@ export class CandidateDetailsComponent {
         );
       }
 
-      if (!this.candidateForm.value.languagesKnown) {
-        this.candidateForm.controls['skills'].setValue(skills);
-      }
+      // if (!this.candidateForm.value.languagesKnown) {
+      //   this.candidateForm.controls['skills'].setValue(skills);
+      // }
 
       if (!this.candidateForm.value.qualification) {
         this.candidateForm.controls['qualification'].setValue(

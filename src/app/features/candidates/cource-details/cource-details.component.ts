@@ -19,12 +19,11 @@ export class CourceDetailsComponent {
   @Output() savedCourse = new EventEmitter();
 
   courseForm!: FormGroup;
-  genderList: Array<ValueSet> = [];
   languages: Array<ValueSet> = [];
   modeList: Array<ValueSet> = [];
   courseNameList: Array<ValueSet> = [];
   batchPreferenceList: Array<ValueSet> = [];
-  statusList: Array<ValueSet> = [];
+  statusList: any;
   courseId: any;
   showError: boolean = false;
   currentRequest!: Subscription;
@@ -40,12 +39,11 @@ export class CourceDetailsComponent {
 
   ngOnInit() {
     this.createcourseForm();
-    
-    this.getGenderList();
     this.getLanguages();
     this.getModeList();
     this.getCourseNameList();
     this.getBatchPreferenceList();
+    this.getStatus();
 
     this.getCourseDetailsByCandidateId();
   }
@@ -70,19 +68,23 @@ export class CourceDetailsComponent {
   }
 
   patchCourseForm(course: Course) {
- 
+
+    const batchEndDate = course.batchEndDate ? new Date(course.batchEndDate) : null;
+    const followUpDate = course.followUpDate ? new Date(course.followUpDate) : null;
+    const batchStartDate = course.batchStartDate ? new Date(course.batchStartDate) : null;
+
     this.courseForm.patchValue({
       id: course?.id,
-      coureName:course?.id,
+      courseName:course?.courseName,
       mode:course?.mode,
       batchPreference:course?.batchPreference,
       batchName:course?.batchName,
-      batchStartDate:course?.batchStartDate,
-      batchEndDate:course?.batchEndDate,
+      batchStartDate:batchStartDate,
+      batchEndDate:batchEndDate,
       counsellerName:course?.counsellerName,
       leadSource:course?.leadSource,
       status:course?.status,
-      followUpDate:course?.followUpDate,
+      followUpDate:followUpDate,
       
     });
   }
@@ -90,7 +92,7 @@ export class CourceDetailsComponent {
   
   getCourseDetailsById() {
      if (this.courseId) {
-      const route = `Courses/${this.courseId}`;
+      const route = `course/${this.courseId}`;
       this.api.get(route).subscribe({
         next: (response) => {
           const course = response as Course;
@@ -104,7 +106,7 @@ export class CourceDetailsComponent {
 
   getCourseDetailsByCandidateId() {
      if (this.candidateId) {
-      const route = `Courses/${this.candidateId}`;
+      const route = `course/${this.candidateId}`;
       this.api.get(route).subscribe({
         next: (response) => {
           const course = response as Course;
@@ -116,15 +118,6 @@ export class CourceDetailsComponent {
     }
   }
 
-  getGenderList() {
-    const route = 'value-sets/search-by-code';
-    const postData = { valueSetCode: 'GENDER' };
-    this.api.retrieve(route, postData).subscribe({
-      next: (response) => {
-        this.genderList = response;
-      },
-    });
-  }
 
   getLanguages() {
     const route = 'value-sets/search-by-code';
@@ -210,7 +203,7 @@ export class CourceDetailsComponent {
   // }
 
   saveCourse() {  
-    const route = 'courses/create';
+    const route = 'course/create';
     const payload = this.courseForm.getRawValue();
 
     if (payload.batchStartDate) {
@@ -253,7 +246,17 @@ export class CourceDetailsComponent {
     });
   }
 
- 
+  getStatus() {
+      const route = 'status';
+      this.api.get(route).subscribe({
+        next: (response) => {
+          this.statusList = response as any;
+          
+      
+         },
+      });
+
+  }
 
  
   

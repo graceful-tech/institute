@@ -3,7 +3,7 @@
 export interface Course {
      
     id: number;
-    coureName:any;
+    courseName:any;
     mode:any;
     batchPreference:any;
     batchName:any;

@@ -88,7 +88,7 @@
       <div class="field-wrapper">
         <label>Batch Start Date</label>
         <div class="input-wrapper">
-         <p-calendar formControlName="batchEndDate" placeholder="Select From Date"></p-calendar>
+         <p-calendar formControlName="batchStartDate" placeholder="Select From Date"></p-calendar>
 
         </div>
       </div>
@@ -156,8 +156,8 @@
         <div class="input-wrapper">
            <p-dropdown
             [options]="statusList"
-            optionLabel="displayValue"
-            optionValue="dataValue"
+            optionLabel="statusName"
+            optionValue="statusName"
             placeholder="Select Status"
             formControlName="status"
           >

@@ -18,7 +18,7 @@
                 <i class="pi pi-link mx-1 icon-small icon-blue chain-icon"></i>
              </div> -->
             <div class="account-wrapper" appClickedOutside (clickedOutside)="close()">
-                <!-- <span class="user-name flex flex-row">
+                <span class="user-name flex flex-row">
                     <div class="first-letter">
                         <div class="first-letter-flex">
                             <span> {{ userDetails?.userName.charAt(0) }}</span>
@@ -31,8 +31,8 @@
                         <span style="font-size: 12px;">{{ userDetails?.organization.name }}</span>
                     </span>
                     <i class="pi pi-angle-down"></i>
-                </span> -->
-                <!-- <ul class="account-menu scalein fadeout">
+                </span>
+                <ul class="account-menu scalein fadeout">
                     <li class="menu-item mt-2" routerLink="/account" (click)="setPanel('ACCOUNT')">
                         <a class="menu-link">
                             <i class="pi pi-user menu-icon"></i>
@@ -45,21 +45,6 @@
                             <span>Change Password</span>
                         </a>
                     </li>
-                    <li class="menu-item mb-2" routerLink="/account/email-config" (click)="setPanel('ACCOUNT')">
-                        <a class="menu-link">
-                            <i class="pi pi-envelope menu-icon"></i>
-                            <span>My Email Configuration</span>
-                        </a>
-                    </li>
-                    <ng-container *ngIf="showControlPanel()">
-                        <div class="divider"></div>
-                        <li class="menu-item my-2" routerLink="/admin-panel/organizations" (click)="setPanel('ADMIN')">
-                            <a class="menu-link">
-                                <i class="pi pi-cog menu-icon"></i>
-                                <span>Control Panel</span>
-                            </a>
-                        </li>
-                    </ng-container>
                     <div class="divider"></div>
                     <li class="menu-item mb-2" (click)="logout()">
                         <a class="menu-link">
@@ -67,7 +52,7 @@
                             <span>Logout</span>
                         </a>
                     </li>
-                </ul> -->
+                </ul>
             </div>
                     
         </div>

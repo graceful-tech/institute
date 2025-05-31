@@ -35,6 +35,7 @@ export class ListCandidatesComponent {
   showError: boolean = false;
   candidateDeleted:any;
   candidateDetails: any;
+  courseNameList: Array<ValueSet> = [];
 
   constructor(
     private fb: FormBuilder,
@@ -52,6 +53,11 @@ export class ListCandidatesComponent {
 
   ngOnInit() {
     this.createSearchForm();
+    this.getBatchPreferenceList();
+    this.getCourseNameList();
+    this.getModeList();
+
+    this.searchCandidates();
   }
 
    createSearchForm() {
@@ -59,7 +65,10 @@ export class ListCandidatesComponent {
       search: [''],
       mode: [''],
       batchPreference: [''],
-      fromDate:['']
+      batchStartDate:[''],
+      parentContact:[''],
+      location:[''],
+      qualification:[''],
     });
   }
 
@@ -81,7 +90,7 @@ export class ListCandidatesComponent {
       this.currentRequest.unsubscribe();
     }
 
-    const route = 'applied-jobs/search';
+    const route = 'candidate/search';
     const payload = this.searchForm.value;
 
   
@@ -111,7 +120,7 @@ export class ListCandidatesComponent {
   }
 
   onClickOnEdit(candidateId:any){
-  this.router.navigate(['/candidate/edit', candidateId]);
+  this.router.navigate(['/candidates/edit', candidateId]);
   }
 
    getSeverity(status: string) {
@@ -167,7 +176,19 @@ export class ListCandidatesComponent {
   }
 
   createCandidate(){
-    
+    this.router.navigateByUrl('/candidates/add');
   }
 
+
+   getCourseNameList() {
+    const route = 'value-sets/search-by-code';
+    const postData = { valueSetCode: 'COURSE_NAME' };
+    this.api.retrieve(route, postData).subscribe({
+      next: (response) => {
+        this.courseNameList = response;
+      },
+    });
+  }
+
+ 
 }

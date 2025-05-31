@@ -38,7 +38,6 @@ export class EditCandidateWrapperComponent {
             
       this.candidateCourse.candidateId = this.candidateId;
       this.candidateCourse.getCourseDetailsByCandidateId();
- 
   }
 
   
@@ -46,7 +45,7 @@ export class EditCandidateWrapperComponent {
   saveCandidate() {
     if (this.candidateDetails.candidateForm.valid) {
       this.dataLoaded = false;
-      this.candidateDetails.saveCandidate();
+      this.candidateDetails.updateCandidate();
     } else {
       this.candidateDetails.showError = true;
     }
@@ -58,9 +57,9 @@ export class EditCandidateWrapperComponent {
 
    this.candidateCourse.candidateId = event.candidateId;
     this.candidateCourse.saveCourse();
+
     if (event.response == 'success') {
-      this.candidateDetails.reset();
-      this.gs.showToast('success', 'Candidate details saved successfully.');
+      this.gs.showMessage('success', 'Candidate details Updated successfully.');
     }
   }
 

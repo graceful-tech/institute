@@ -1,30 +1,44 @@
-
-.search-form {
-    flex: 1;
-}
-.move-down {
-    margin-top: 10px; 
-}
-.available{
-    font-size: 14px;
-    color: #2196F3;
-}
-.candidate-detail span {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-.candidate-detail {
+.applied-job {
     display: flex;
     flex-direction: column;
 }
-.green {
-    color:#0f9640;
-    font-weight: 500;
+
+.applied-job span {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
- .flex-start label {
+
+.flex-start label {
     font-weight: 500;
     color: #404040;
 }
+
+.pi-info-circle {
+    color: #2196F3;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.green {
+    color: #0f9640;
+    font-weight: 500;
+}
+
+.orange {
+    color: #dc5512;
+    font-weight: 500;
+}
+
+.red {
+    color: #d11111;
+    font-weight: 500;
+}
+
+.row-footer {
+    padding: 0.6rem 1rem !important;
+    background: #F9FAFB;
+}
+
 .no-border {
     border: none !important;
 }
@@ -33,72 +47,23 @@
     font-size: 12px;
     letter-spacing: 0.05em;
 }
-.row-footer {
-    padding: 0.6rem 1rem !important;
-    background: #F9FAFB;
-}
-.pi-info-circle {
-    color: #2196F3;
-    margin-top: 5px;
-    cursor: pointer;
-} 
- 
-.checkbox {
-    margin-right: 2rem;
-}
-.checkbox-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.search-wrapper{
-    margin-bottom: 0.8rem;
-    
-}
-.search-icon {
-    font-size: 30px;  
-    color: #2196F3;    
-    cursor: pointer;   
-    padding: 5px;      
-}
-.search-text {
-    font-size: 14px;       
-    color: #2196F3;        
-    margin-left: 5px;      
-     
-}
-.icon-large {
-    font-size: 25px; 
-  }
-  
-  .icon-blue {
-    color: blue;
-  }
-  .disabled {
-    opacity: 1;
-    cursor: not-allowed;
-}
-.bold-icon {
-    font-weight: 900;  
-}
-.user-icon {
-    position: relative;
-    display: inline-block;
-    font-size: 24px;  
-  }
-  .plus-icon {
-    position: absolute;
-    top: 0;
-    right: -9px;  
-    font-size: 12px;  
-    font-weight: bold;
-  }
-  .mat-slide-toggle-label {
-    color: inherit;   
-    display: inline-block; 
-  }
 
-  .delete {
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 200px;  
+}
+
+.action-icons {
+    display: flex;
+    flex-direction: Row;
+    align-items: flex-start;
+    gap: 0.5rem;  
+}
+
+.delete {
     color: #EF2A2A;
  }
  .rounded-button {
