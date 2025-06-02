@@ -47,13 +47,24 @@
                             </div>
                         </div>
                     </div>
-               
+
                     <div class="col-12 md:col-6 lg:col-2">
                         <div class="field-wrapper">
                             <div class="input-wrapper">
                                 <p-dropdown [options]="batchPreferenceList" optionLabel="displayValue"
                                     optionValue="dataValue" placeholder="Select Batch"
                                     formControlName="batchPreference">
+                                </p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 md:col-6 lg:col-2">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
+                                <p-dropdown [options]="usersList" optionLabel="userName"
+                                    optionValue="userName" placeholder="Select Users"
+                                    formControlName="userName">
                                 </p-dropdown>
                             </div>
                         </div>

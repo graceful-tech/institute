@@ -13,13 +13,13 @@
       </div>
       <small class="error-message"
         *ngIf="paymentForm.controls['courseFees'].invalid && showError">
-        Course Fees is required</small
+        Please Enter 0 If Course Not Selected</small
       >
     </div>
 
     <div class="col-12 md:col-6 lg:col-3">
       <div>
-        <label class="required">DisCount</label>
+        <label>Discount</label>
          <div class="input-wrapper">
             <input pKeyFilter="num" type="number"  pInputText formControlName="discount" />
         </div>
@@ -57,7 +57,7 @@
       </div>
       <small class="error-message"
         *ngIf="paymentForm.controls['amountPaid'].invalid && showError">
-         Amount is required</small
+         Enter 0 If Amount Not Paid</small
       >
     </div>
 

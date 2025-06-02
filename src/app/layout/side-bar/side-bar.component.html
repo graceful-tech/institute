@@ -2,7 +2,7 @@
 	<div class="side-bar">
 		<div class="side-bar-dark">
 			<div class="side-bar-container custom-scroll">
-				<ng-container *ngIf="panel == 'HOME'">
+				<ng-container>
 					<ul>
 						<li class="menu-item" routerLink="/dashboard" pTooltip="Dashboard"
 							(click)="gs.setPanel('HOME')">
@@ -17,8 +17,17 @@
 							</a>
 						</li>
 						<li  class="menu-item" pTooltip="View-user" routerLink="/view-user">
-							<a class="menu-link" routerLinkActive="menu-active">
+							<a class="menu-link" routerLinkActive="menu-active" [routerLinkActiveOptions]="{exact:
+                                false}">
 								<i class="pi pi-shield menu-icon"></i>
+							</a>
+						</li>
+
+						<li class="menu-item"  routerLink="/admin-panel/payment-details"
+							pTooltip="Payment">
+							<a class="menu-link" routerLinkActive="menu-active" [routerLinkActiveOptions]="{exact:
+                            true}">
+								<i class="pi pi-money-bill menu-icon"></i>
 							</a>
 						</li>
 

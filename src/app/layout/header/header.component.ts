@@ -24,6 +24,7 @@ export class HeaderComponent {
   showPopup: any;
   timer: any;
   taskOpen: boolean = false;
+  username:any
 
   constructor(
     private router: Router,
@@ -34,6 +35,9 @@ export class HeaderComponent {
   ) { }
 
   ngOnInit() {
+
+        this.username = localStorage.getItem('userName');
+
     this.gs.user$.subscribe((response) => {
       this.userDetails = response;
     });
@@ -43,9 +47,7 @@ export class HeaderComponent {
     });
 
     this.toggleAccountMenu();
-    this.searchUserActivityMode();
-    this.getUserMode();
-    //this.getTimer();
+      
   }
 
   toggleAccountMenu() {
@@ -62,7 +64,6 @@ export class HeaderComponent {
   }
 
   logout() {
-    // this.setLogoutTime();
     localStorage.clear();
     this.router.navigate(['/login']);
   }
@@ -83,21 +84,7 @@ export class HeaderComponent {
     }
   }
 
-  // openQuickCandidateModal() {
-  //   this.dialog.open(QuickCandidateComponent, {
-  //     header: 'Add Candidate',
-  //     width: '50%',
-  //     data: {},
-  //   });
-  // }
-
-  // openCandidateLinkShareModal() {
-  //   this.dialog.open(CandidateLinkShareComponent, {
-  //     header: 'Share Candidate Link',
-  //     width: '30%',
-  //     data: {},
-  //   });
-  // }
+ 
 
   openSideBar() {
     this.gs.setSidebar(true);
@@ -119,18 +106,7 @@ export class HeaderComponent {
     });
   }
 
-  searchUserActivityMode() {
-    const route = 'idle-timeout/get-mode';
-    this.api.get(route).subscribe({
-      next: (response: any) => {
-        this.userActivity = response;
-      },
-      error: (error) => {
-        console.error('Error fetching User Activity Mode:', error);
-      },
-    });
-  }
-
+  
   getUserMode() {
     const route = 'idle-timeout/get-usermode';
     this.api.get(route).subscribe({

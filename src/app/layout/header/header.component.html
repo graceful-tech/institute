@@ -21,15 +21,15 @@
                 <span class="user-name flex flex-row">
                     <div class="first-letter">
                         <div class="first-letter-flex">
-                            <span> {{ userDetails ? userDetails.userName.charAt(0) : 'a' }}</span>
+                            <span> {{ username ? username.charAt(0) : 'a' }}</span>
                         </div>
                     </div>
                     <span class="flex flex-column align-items-start mr-2">
                         <span class="font-size: 12px;" style="padding-bottom: 1px;">
-                            {{ userDetails ? userDetails.userName:'Name' }} 
+                            {{ username ? username:'Name' }} 
                         <!-- <b> - </b> {{ userDetails?.role.name }} -->
                         </span>
-                        <span style="font-size: 12px;">{{ userDetails?.organization.name }}</span>
+                        <!-- <span style="font-size: 12px;">{{ userDetails?.organization.name }}</span> -->
                     </span>
                     <i class="pi pi-angle-down"></i>
                 </span>

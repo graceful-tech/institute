@@ -37,6 +37,7 @@ export class ListCandidatesComponent {
   candidateDetails: any;
   courseNameList: Array<ValueSet> = [];
   users: any;
+  usersList: any;
 
   constructor(
     private fb: FormBuilder,
@@ -59,6 +60,7 @@ export class ListCandidatesComponent {
     this.getModeList();
 
     this.searchCandidates();
+    this.getAllUsers();
 
     this.searchForm.valueChanges.subscribe((response) => {
       this.searchCandidates();
@@ -70,10 +72,9 @@ export class ListCandidatesComponent {
       search: [''],
       mode: [''],
       batchPreference: [''],
-      batchStartDate:[''],
-      parentContact:[''],
-      location:[''],
-      qualification:[''],
+      userName:['']
+      
+      
     });
   }
 
@@ -199,7 +200,7 @@ export class ListCandidatesComponent {
     const route = 'user';
     this.api.get(route).subscribe({
       next: (response) => {
-        this.users = response as any
+        this.usersList = response as any
       },
     });
   }
