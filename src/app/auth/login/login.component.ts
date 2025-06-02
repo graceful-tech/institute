@@ -59,8 +59,8 @@ export class LoginComponent {
           localStorage.setItem('userName', user.userName.toString());
           localStorage.setItem('userId', user.id.toString());
           this.router.navigate(['/candidates']);
-          this.gs.loadData();
-          // this.gs.idleTimeoutLogin();
+          // this.gs.loadData();
+          
         },
         error: error => {
           if (error.error?.code == 'HM_0128') {

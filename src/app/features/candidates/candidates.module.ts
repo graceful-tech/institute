@@ -9,6 +9,7 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
 import { CourceDetailsComponent } from './cource-details/cource-details.component';
 import { EditCandidateWrapperComponent } from './edit-candidate-wrapper/edit-candidate-wrapper.component';
 import { ListCandidatesComponent } from './list-candidates/list-candidates.component';
+import { PaymentComponent } from './payment/payment.component';
  
 
 
@@ -19,7 +20,8 @@ import { ListCandidatesComponent } from './list-candidates/list-candidates.compo
     AddCommentComponent,
     CourceDetailsComponent,
     EditCandidateWrapperComponent,
-    ListCandidatesComponent
+    ListCandidatesComponent,
+    PaymentComponent
 
   ],
   imports: [

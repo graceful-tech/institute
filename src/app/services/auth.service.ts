@@ -19,13 +19,6 @@ export class AuthService {
     return userName ? true : false;
   }
 
-  signOut() {
-    if (confirm('Are you sure you want to sign out?')) {
-      google.accounts.id.disableAutoSelect();
-      localStorage.clear();
-      sessionStorage.clear();
-      this.router.navigate(['/landing']);
-    }
-  }
+ 
 
 }

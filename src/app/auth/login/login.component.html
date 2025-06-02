@@ -2,7 +2,7 @@
     <div style="width: 350px;background: #fff; padding: 25px;">
         <div class="heading">
             <span>Login</span>
-            <span class="create-account"><a routerLink="/create-user">Create User</a></span>
+            <span class="create-account"><a [routerLink]="['/login/create-user']">Create User</a></span>
         </div>
         <form [formGroup]="loginForm">
             <div class="grid">

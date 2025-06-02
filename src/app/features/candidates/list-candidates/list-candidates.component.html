@@ -1,6 +1,6 @@
 <div class="wrapper">
     <div class="heading">
-        <span>My Candidates <span class="available">
+        <span>My Students <span class="available">
             <!-- (Available: {{ listApplication?.totalRecords }}) -->
         </span></span>
     </div>
@@ -58,14 +58,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 md:col-6 lg:col-2">
+                    <!-- <div class="col-12 md:col-6 lg:col-2">
                         <div class="field-wrapper">
                             <div class="input-wrapper">
                                 <p-calendar formControlName="batchStartDate" placeholder="Select Joining Date">
                                 </p-calendar>
                             </div>
                         </div>
-                    </div>  
+                    </div>   -->
 
                     <div class="col-12 md:col-6 lg:col-2 flex justify-content-end">
                         <div class="field-wrapper">
@@ -144,9 +144,9 @@
                 </td>
                 <td class="no-border">
                     <div class="applied-job">
-                        <span>{{ candidate.courseFees }}</span>
-                        <span>{{ candidate.paidAmount }}</span>
-                        <span>{{ candidate.paidAmount }}</span>
+                        <span>COURSE FESS: {{ candidate.courseFees }}</span>
+                        <span>AMOUTN PAID: {{ candidate.amountPaid }}</span>
+                        <span>BALANCE AMOUNT: {{ candidate.balanceAmount }}</span>
                     </div>
                 </td>
                 <td class="no-border">
@@ -177,14 +177,14 @@
                     </div>
                 </td> -->
 
-                <!-- <td colspan="1" class="row-footer">
+                <td colspan="1" class="row-footer">
                     <div class="flex-start">
-                        <label class="pr-2">OWNED BY:</label>
+                        <label class="pr-2">CREATED USER:</label>
                         <div class="pr-2">
-                            {{ candidate.ownedUser }}
+                            {{ candidate.createdUserName }}
                         </div>
                     </div>
-                </td> -->
+                </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">

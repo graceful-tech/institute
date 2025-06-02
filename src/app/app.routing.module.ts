@@ -4,7 +4,17 @@ import { LoginComponent } from './auth/login/login.component';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+
+   {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+
+   {
+    path: 'login',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
 
   {
     path: 'candidates',

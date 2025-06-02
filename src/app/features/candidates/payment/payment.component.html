@@ -1,0 +1,104 @@
+ 
+<app-institute-divider></app-institute-divider>
+<form [formGroup]="paymentForm">
+  <div class="section-heading">Payemnt Details</div>
+  <div class="grid">
+     
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label class="required">Course Fees</label>
+         <div class="input-wrapper">
+            <input pKeyFilter="num" type="number"  pInputText formControlName="courseFees" />
+        </div>
+      </div>
+      <small class="error-message"
+        *ngIf="paymentForm.controls['courseFees'].invalid && showError">
+        Course Fees is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div>
+        <label class="required">DisCount</label>
+         <div class="input-wrapper">
+            <input pKeyFilter="num" type="number"  pInputText formControlName="discount" />
+        </div>
+      </div>
+      <small class="error-message"
+        *ngIf="paymentForm.controls['discount'].invalid && showError">
+         Discount is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div>
+        <label>Paid Date</label>
+        <div class="input-wrapper">
+         <p-calendar formControlName="paidDate" placeholder="Select From Date"></p-calendar>
+
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="
+          paymentForm.controls['paidDate'].invalid && showError
+        "
+      >
+        Paid Date is required</small
+      >
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <div>
+        <label class="required">Amount Paid</label>
+         <div class="input-wrapper">
+            <input pKeyFilter="num" type="number"  pInputText formControlName="amountPaid" />
+        </div>
+      </div>
+      <small class="error-message"
+        *ngIf="paymentForm.controls['amountPaid'].invalid && showError">
+         Amount is required</small
+      >
+    </div>
+
+
+     <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label>Mode Of Payment</label>
+        <div class="input-wrapper">
+           <p-dropdown
+            [options]="paymentModeList"
+             optionLabel="displayValue"
+            optionValue="dataValue"
+            placeholder="Select Payment Mode"
+            formControlName="paymentMode"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+      <small
+        class="error-message"
+        *ngIf="paymentForm.controls['paymentMode'].invalid && showError"
+      >
+      Payment Mode is required</small
+      >
+    </div>
+
+     <div class="col-12 md:col-6 lg:col-3">
+      <div class="field-wrapper">
+        <label>Balance Due Amount</label>
+         <div class="input-wrapper">
+            <input pKeyFilter="num" type="number"  pInputText formControlName="balanceAmount" />
+        </div>
+      </div>
+      <small class="error-message"
+        *ngIf="paymentForm.controls['balanceAmount'].invalid && showError">
+         Balance Due Amount is required</small
+      >
+    </div>
+
+  </div>
+
+  <app-institute-divider></app-institute-divider>
+    
+</form>

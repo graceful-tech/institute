@@ -36,6 +36,7 @@ export class ListCandidatesComponent {
   candidateDeleted:any;
   candidateDetails: any;
   courseNameList: Array<ValueSet> = [];
+  users: any;
 
   constructor(
     private fb: FormBuilder,
@@ -46,18 +47,22 @@ export class ListCandidatesComponent {
     private dialog: DialogService,
     private ngxLoader: NgxUiLoaderService
   ) {
-     
+       this.createSearchForm();
   }
 
 
 
   ngOnInit() {
-    this.createSearchForm();
+  
     this.getBatchPreferenceList();
     this.getCourseNameList();
     this.getModeList();
 
     this.searchCandidates();
+
+    this.searchForm.valueChanges.subscribe((response) => {
+      this.searchCandidates();
+    });
   }
 
    createSearchForm() {
@@ -190,5 +195,12 @@ export class ListCandidatesComponent {
     });
   }
 
- 
+  getAllUsers() {
+    const route = 'user';
+    this.api.get(route).subscribe({
+      next: (response) => {
+        this.users = response as any
+      },
+    });
+  }
 }

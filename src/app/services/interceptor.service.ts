@@ -11,28 +11,25 @@ export class InterceptorService implements HttpInterceptor {
 
   constructor() { }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    // if (req.context.get(IS_GLOBAL_REQUEST)) {
-    //   req = req.clone({
-    //     setHeaders: {
-    //       tenant: this.defaultTenant
-    //     },
-    //   });
-    // } else if (req.context.get(IS_APPLY_JOB_REQUEST)) {
-    //   // do nothing
-    // }
-    // else {
+   if (request.url.includes('/login') || request.url.includes('/google-login') || request.url.includes('/user/create')
+    ) {
+      console.log('Skipping interceptor for login request');
+      return next.handle(request);
+    }
+
+
       const username: any = localStorage.getItem('userName');
-      const userid: any = localStorage.getItem('userid');
-      req = req.clone({
+      const userid: any = localStorage.getItem('userId');
+      request = request.clone({
         setHeaders: {
-          username: 'keerthi',
-          userId: '5',
+          username: username,
+          userId: userid,
         },
       });
     //}
 
-    return next.handle(req);
+    return next.handle(request);
   }
 }

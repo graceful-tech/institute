@@ -28,6 +28,17 @@ export class AppComponent {
 
   ngOnInit() {
 
+
+    if (this.auth.isAuthenticated()) {
+      const userId = localStorage.getItem('userId');
+      if (userId) {
+        // this.getUserDetails(parseInt(userId));
+        this.gs.loadData();
+      }
+
+      
+    }
+
       this.gs.sidebar$.subscribe((response: any) => {
       this.sidebar = response;
     });

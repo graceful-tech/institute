@@ -6,6 +6,7 @@ import { GlobalService } from '../../../services/global.service';
 import { DatePipe } from '@angular/common';
 import { CourceDetailsComponent } from '../cource-details/cource-details.component';
 import { ActivatedRoute } from '@angular/router';
+import { PaymentComponent } from '../payment/payment.component';
 
 @Component({
   selector: 'app-edit-candidate-wrapper',
@@ -17,6 +18,8 @@ export class EditCandidateWrapperComponent {
  @ViewChild(CandidateDetailsComponent) candidateDetails!: CandidateDetailsComponent;
  @ViewChild(CandidateCommentComponent) candidateComment!: CandidateCommentComponent;
  @ViewChild(CourceDetailsComponent) candidateCourse!: CourceDetailsComponent;
+@ViewChild(PaymentComponent) paymentDetails!: PaymentComponent;
+
   
   dataLoaded: boolean = true;
   candidateId: any;
@@ -38,6 +41,9 @@ export class EditCandidateWrapperComponent {
             
       this.candidateCourse.candidateId = this.candidateId;
       this.candidateCourse.getCourseDetailsByCandidateId();
+
+      this.paymentDetails.candidateId = this.candidateId;
+      this.paymentDetails.getPaymentDetailsByCandidateId();
   }
 
   
@@ -52,13 +58,16 @@ export class EditCandidateWrapperComponent {
   }
 
   complete(event: any) {
+     this.dataLoaded = true;
+  if (event.response == 'success') {
     
-   this.dataLoaded = true;
-
-   this.candidateCourse.candidateId = event.candidateId;
+    this.dataLoaded = true;
+    this.candidateCourse.candidateId = event.candidateId;
     this.candidateCourse.saveCourse();
 
-    if (event.response == 'success') {
+    this.candidateCourse.candidateId = event.candidateId;
+    this.paymentDetails.savepayment();
+
       this.gs.showMessage('success', 'Candidate details Updated successfully.');
     }
   }

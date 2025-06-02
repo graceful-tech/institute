@@ -273,9 +273,8 @@ export class CandidateDetailsComponent {
       },
       error: (error) => {
         this.gs.showMessage('Error', 'Error in Creating Candidate');
-        // this.savedCandidate.emit({ response: 'error' });
-        this.ngxLoader.stop();
-      },
+         this.savedCandidate.emit({ response: 'error' });
+       },
     });
   }
 
@@ -300,8 +299,7 @@ export class CandidateDetailsComponent {
       error: (error) => {
         this.gs.showMessage('Error', 'Error in Creating Candidate');
         // this.savedCandidate.emit({ response: 'error' });
-        this.ngxLoader.stop();
-      },
+       },
     });
   }
 

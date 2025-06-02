@@ -5,6 +5,7 @@ import { ApiService } from '../../../services/api.service';
 import { GlobalService } from '../../../services/global.service';
 import { DatePipe } from '@angular/common';
 import { CourceDetailsComponent } from '../cource-details/cource-details.component';
+import { PaymentComponent } from '../payment/payment.component';
 
 @Component({
   selector: 'app-create-candidate',
@@ -15,7 +16,9 @@ import { CourceDetailsComponent } from '../cource-details/cource-details.compone
 export class CreateCandidateComponent {
  @ViewChild(CandidateDetailsComponent) candidateDetails!: CandidateDetailsComponent;
  @ViewChild(CandidateCommentComponent) candidateComment!: CandidateCommentComponent;
-@ViewChild(CourceDetailsComponent) candidateCourse!: CourceDetailsComponent;
+ @ViewChild(CourceDetailsComponent) candidateCourse!: CourceDetailsComponent;
+  @ViewChild(PaymentComponent) paymentDetails!: PaymentComponent;
+
   
   dataLoaded: boolean = true;
   candidateId: any;
@@ -33,30 +36,39 @@ export class CreateCandidateComponent {
   
 
   saveCandidate() {
-    if (this.candidateDetails.candidateForm.valid) {
+    if (this.candidateDetails.candidateForm.valid && this.candidateCourse.courseForm.valid &&
+       this.paymentDetails.paymentForm.valid) {
       this.dataLoaded = false;
       this.candidateDetails.saveCandidate();
     } else {
       this.candidateDetails.showError = true;
+      this.candidateCourse.showError = true;
+      this.paymentDetails.showError = true;
     }
   }
 
   complete(event: any) {
     this.dataLoaded = true;
     if(event.response == 'success'){
-    
+      this.dataLoaded = false;
       // if (this.candidateCourse.courseForm.valid) {
-         this.candidateCourse.candidateId = event.candidateId;
-         this.candidateCourse.saveCourse();
+      this.candidateCourse.candidateId = event.candidateId;
+      this.candidateCourse.saveCourse();
       //  }
-
-    this.candidateComment.candidateId = event.candidateId;
-    this.candidateComment.createComment();
-    if (event.response == 'success') {
-      this.candidateDetails.reset();
-      this.gs.showToast('success', 'Candidate details saved successfully.');
-    }
+      this.paymentDetails.candidateId = event.candidateId;
+      this.paymentDetails.savepayment();
+      
+       this.candidateComment.candidateId = event.candidateId;
+       this.candidateComment.createComment();
+    
+       this.candidateDetails.reset();
+       this.candidateCourse.reset();
+       this.paymentDetails.reset();
+       
+       this.gs.showMessage('success', 'Candidate details saved successfully.');
+       this.dataLoaded = true;
   }
+   this.dataLoaded = true;
   }
 
   canDeactivate(){

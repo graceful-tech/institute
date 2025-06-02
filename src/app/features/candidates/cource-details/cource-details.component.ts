@@ -53,15 +53,15 @@ export class CourceDetailsComponent {
   createcourseForm() {
     this.courseForm = this.fb.group({
       id: [''],
-      courseName: [''],
-      mode: [''],
+      courseName: ['', Validators.required],
+      mode: ['', Validators.required],
       batchName: [''],
       batchEndDate: [''],
       batchStartDate: [''],
       batchPreference: [''],
       counsellorName:[''],
-      leadSource:[''],
-      status:[''],
+      leadSource:['', Validators.required],
+      status:['', Validators.required],
       followUpDate:[''],
    
     });
