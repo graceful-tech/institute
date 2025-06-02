@@ -33,8 +33,10 @@ export class ViewUsersComponent {
   }
 
   ngOnInit() {
-    this.getUsers();
+  
     this.createSearchForm();
+
+     this.searchUsers();
 
     this.searchForm.valueChanges.subscribe((response) => {
       // this.listApplication.searchData = this.searchForm.value;
@@ -49,24 +51,6 @@ export class ViewUsersComponent {
     });
   }
 
-  getUsers() {
-    const route = 'value-sets';
-    this.api.get(route).subscribe({
-      next: (response) => {
-        const candidate = response as User;
-        if (candidate !== null) {
-          this.availableUsers = candidate;
-        }
-        // this.ngxLoaderStop();
-      },
-      error: (err) => {
-        // this.ngxLoaderStop();
-        console.error('Error fetching candidate image:', err);
-
-      }
-    });
-
-  }
   searchUsers() {
     const route = 'user/search';
     const postData = this.searchForm.value;

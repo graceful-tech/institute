@@ -54,7 +54,7 @@ export class CreateUserComponent {
   createAccount() {
     if (this.createAccountForm.valid) {
       this.loadingFlag = true;
-      const route = 'user/create/';
+      const route = `user/create`;
       const postData = this.createAccountForm.value;
 
       this.api.retrieve(route, postData).subscribe({
