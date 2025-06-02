@@ -1,14 +1,19 @@
 import { createComponent, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateUserComponent } from './auth/create-user/create-user.component';
 import { LoginComponent } from './auth/login/login.component';
 
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
 
   {
     path: 'candidates',
     loadChildren: () => import('./features/candidates/candidates.module').then((m) => m.CandidatesModule),
+  },
+
+  {
+    path: 'view-user',
+    loadChildren: () => import('./features/users/users.module').then((m) => m.UsersModule),
   },
 ];
 

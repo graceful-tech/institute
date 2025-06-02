@@ -4,11 +4,11 @@ import { MenuItem } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { GlobalService } from '../../services/global.service';
 import { ApiService } from '../../services/api.service';
- 
+
 
 @Component({
   selector: 'app-header',
-  standalone:false,
+  standalone: false,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
@@ -23,7 +23,7 @@ export class HeaderComponent {
   formattedTime: any;
   showPopup: any;
   timer: any;
-  taskOpen: boolean =false;
+  taskOpen: boolean = false;
 
   constructor(
     private router: Router,
@@ -62,9 +62,9 @@ export class HeaderComponent {
   }
 
   logout() {
-    this.setLogoutTime();
+    // this.setLogoutTime();
     localStorage.clear();
-    this.router.navigateByUrl('/landing-page');
+    this.router.navigate(['/login']);
   }
 
   setPanel(panel: string) {
@@ -106,8 +106,10 @@ export class HeaderComponent {
 
   setBreakTime() {
     const route = 'idle-timeout/set-breaktime';
-    const payload = { mode: this.Mode ,
-                     sessionId: localStorage.getItem('sessionId') };
+    const payload = {
+      mode: this.Mode,
+      sessionId: localStorage.getItem('sessionId')
+    };
     this.api.retrieve(route, payload).subscribe({
       next: (response) => {
         localStorage.setItem('sessionId', response?.sessionId);
@@ -134,7 +136,7 @@ export class HeaderComponent {
     this.api.get(route).subscribe({
       next: (response: any) => {
         this.userMode = response;
-       if (response?.mode === 'Break' || response?.mode === 'Idle') {
+        if (response?.mode === 'Break' || response?.mode === 'Idle') {
           const responseTime = response?.timeIn;
           const formattedResponseTime = responseTime.split('.')[0];
           const responseDate = new Date(formattedResponseTime);
@@ -147,7 +149,7 @@ export class HeaderComponent {
 
           this.showPopup = true;
           this.startClock();
-         }
+        }
       },
     });
   }
@@ -191,10 +193,10 @@ export class HeaderComponent {
 
   setLogoutTime() {
     const route = 'idle-timeout/set-Logout';
-    const payload = {sessionId: localStorage.getItem('sessionId')}
+    const payload = { sessionId: localStorage.getItem('sessionId') }
     this.api.retrieve(route, payload).subscribe({
       next: (response: any) => {
-      
+
       },
       error: (error) => {
         console.error('Error fetching User Activity Mode:', error);

@@ -63,14 +63,18 @@
             <div class="grid">
                 <div class="col-12">
                     <div class="field-wrapper">
-                        <p-button [label]="loadingFlag ? 'Please Wait..' : 'Create User'" [disabled]="loadingFlag"
+                        <p-button *ngIf="!userId" [label]="loadingFlag ? 'Please Wait..' : 'Create User'" [disabled]="loadingFlag"
                             (onClick)="createAccount()">
+                        </p-button>
+                        <p-button *ngIf="userId"  [label]="loadingFlag ? 'Please Wait..' : 'Update User'" [disabled]="loadingFlag"
+                            (onClick)="updateAccount()">
                         </p-button>
                         <div *ngIf="loadingFlag" class="mt-4">We are creating your account. Please don't click reload or
                             back button.</div>
                     </div>
                 </div>
             </div>
+            <small class="error-message" *ngIf="error">{{ error }}</small>
         </form>
     </div>
 </div>

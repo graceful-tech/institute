@@ -1,4 +1,4 @@
-export interface Student {
+export interface User {
     id: Number;
     name: String;
     mobileNumber: String;

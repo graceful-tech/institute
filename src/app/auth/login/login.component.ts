@@ -4,7 +4,7 @@ import { ApiService } from '../../services/api.service';
 import { DialogService } from 'primeng/dynamicdialog';
 import { GlobalService } from '../../services/global.service';
 import { Router } from '@angular/router';
-import { Student } from '../../models/admin/student';
+import { User } from '../../models/admin/student';
 
 @Component({
   selector: 'app-login',
@@ -39,27 +39,26 @@ export class LoginComponent {
 
   createLoginForm() {
     this.loginForm = this.fb.group({
-      userName: ['', Validators.required],
+      mobileNumber: ['', Validators.required],
       password: ['', Validators.required],
-      code: ['', Validators.required]
     })
   }
 
   login() {
     if (this.loginForm.valid) {
       this.loadingFlag = true;
-      const route = 'users/login';
+      const route = 'auth/login';
       const postData = this.loginForm.value;
       localStorage.setItem('tenant', postData.code);
 
       this.api.retrieve(route, postData).subscribe({
         next: response => {
-          const user = response as Student;
+          const user = response as User;
           this.gs.setUser(user);
           this.loadingFlag = false;
           localStorage.setItem('userName', user.userName.toString());
           localStorage.setItem('userId', user.id.toString());
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/candidates']);
           this.gs.loadData();
           // this.gs.idleTimeoutLogin();
         },

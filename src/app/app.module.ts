@@ -11,15 +11,17 @@ import { MessageService } from 'primeng/api';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { LoginComponent } from './auth/login/login.component';
-import { CreateUserComponent } from './auth/create-user/create-user.component';
 import { LayoutModule } from "./layout/layout.module";
+import { ViewUsersComponent } from './features/users/view-users/view-users.component';
+import { CreateUserComponent } from './features/users/create-user/create-user.component';
  
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ViewUsersComponent
 
   ],
   imports: [

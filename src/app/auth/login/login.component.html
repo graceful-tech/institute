@@ -6,16 +6,16 @@
         </div>
         <form [formGroup]="loginForm">
             <div class="grid">
-                <div class="col-12">
+               <div class="col-12">
                     <div class="field-wrapper">
                         <label class="required">Mobile Number</label>
                         <div class="input-wrapper">
-                            <input type="text" pInputText formControlName="userName" />
+                            <input type="text" maxlength="10" pInputText formControlName="mobileNumber">
                         </div>
                     </div>
-                    <small class="error-message" *ngIf="loginForm.controls['userName'].invalid && showError">
-                        User Name is required</small>
-                </div>
+                    <small class="error-message" *ngIf="loginForm.controls['mobileNumber'].invalid && showError">
+                        Mobile Number is required</small>
+                </div>  
             </div>
             <div class="grid">
                 <div class="col-12">
