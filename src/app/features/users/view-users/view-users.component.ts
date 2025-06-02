@@ -13,7 +13,6 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
   styleUrl: './view-users.component.css'
 })
 export class ViewUsersComponent {
-
   availableUsers: any;
   searchForm!: FormGroup;
   totalRecords: number = 0;
@@ -33,10 +32,10 @@ export class ViewUsersComponent {
   }
 
   ngOnInit() {
-  
+
     this.createSearchForm();
 
-     this.searchUsers();
+    this.searchUsers();
 
     this.searchForm.valueChanges.subscribe((response) => {
       // this.listApplication.searchData = this.searchForm.value;
@@ -65,13 +64,13 @@ export class ViewUsersComponent {
     });
   }
 
-
-   
-
-
   onPageChange(event: any) {
     this.currentPage = event.page + 1;
     this.maxLimitPerPage = event.rows;
     this.searchUsers();
+  }
+
+  createCandidate() {
+    throw new Error('Method not implemented.');
   }
 }

@@ -5,7 +5,7 @@
             </span></span>
     </div>
     <div class="profile-wrapper">
-          <form [formGroup]="searchForm">
+        <form [formGroup]="searchForm">
             <div class="search-wrapper">
                 <div class="grid grid-nogutter">
                     <div class="col-12 md:col-6 lg:col-2">
@@ -19,17 +19,16 @@
             </div>
         </form>
 
-
         <div>
             <p-table class="mobile" [value]="availableUsers">
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 5%;">ID</th>
-                        <th style="width: 10%;">Name</th>
-                        <th style="width: 10%;">Mobile Number</th>
-                        <th style="width: 10%;">Email</th>
-                        <th style="width: 10%;">UserName</th>
-                        <th style="width:5%">Action</th>
+                        <th style="width: 10%;">NAME</th>
+                        <th style="width: 10%;">MOBILE NUMBER</th>
+                        <th style="width: 10%;">EMAIL</th>
+                        <th style="width: 10%;">USERNAME</th>
+                        <th style="width:5%">ACTION</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-user>
