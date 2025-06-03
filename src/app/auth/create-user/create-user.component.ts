@@ -17,6 +17,7 @@ export class CreateUserComponent {
   loadingFlag: boolean = false;
   error!: string;
   userId!: number;
+  updateMode: boolean = false;
 
 
 
@@ -52,7 +53,7 @@ export class CreateUserComponent {
   }
 
   createAccount() {
-     
+
     if (this.createAccountForm.valid) {
       this.loadingFlag = true;
       const route = 'user/create';
@@ -64,7 +65,7 @@ export class CreateUserComponent {
           const customer = response as any;
           // this.gs.openLogin('Success', 'Your Acoount Created Successfully');
           // console.log(customer);
-          this.gs.showMessage('success','User Create Successfully');
+          this.gs.showMessage('success', 'User Create Successfully');
         },
         error: (error) => {
           this.error = error.error?.message;
@@ -101,6 +102,7 @@ export class CreateUserComponent {
   }
 
   patchUserForm(user: User) {
+    this.updateMode = true;
     this.createAccountForm.patchValue({
       id: user?.id,
       name: user?.name,
@@ -108,7 +110,6 @@ export class CreateUserComponent {
       email: user?.email,
       userName: user?.userName,
       password: user?.password
-
     });
   }
 
