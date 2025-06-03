@@ -60,14 +60,10 @@ export class LoginComponent {
           localStorage.setItem('userId', user.id.toString());
           this.router.navigate(['/candidates']);
           // this.gs.loadData();
-          
+
         },
         error: error => {
-          if (error.error?.code == 'HM_0128') {
-            this.openPaymentOptionDialog();
-          } else {
-            this.error = error.error?.message
-          }
+          this.error = error.error?.message
           this.loadingFlag = false;
         }
       })
