@@ -5,7 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
 
-   {
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
@@ -31,6 +31,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/payments/payment.module').then((m) => m.PaymentModule),
   },
 
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./features/dashboard/dashboard.module').then((m) => m.DashboardModule),
+  },
 ];
 
 @NgModule({
