@@ -70,7 +70,8 @@ export class ViewUsersComponent {
     this.searchUsers();
   }
 
-  createCandidate() {
-    throw new Error('Method not implemented.');
+  reset() {
+    this.searchForm.reset();
   }
+
 }
