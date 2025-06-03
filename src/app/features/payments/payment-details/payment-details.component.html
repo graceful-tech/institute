@@ -41,13 +41,40 @@
                     <div class="col-12 md:col-6 lg:col-2">
                         <div class="field-wrapper">
                             <div class="input-wrapper">
+                                <p-dropdown [options]="dateFilterTypes" optionLabel="displayValue"
+                                    optionValue="dataValue" placeholder="Select Date Filter"
+                                    formControlName="filterType">
+                                </p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-2" *ngIf="searchForm.value.filterType == 'Custom'">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
+                                <p-calendar formControlName="fromDate" placeholder="Select From Date">
+                                </p-calendar>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-2" *ngIf="searchForm.value.filterType == 'Custom'">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
+                                <p-calendar formControlName="toDate" placeholder="Select To Date"></p-calendar>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-12 md:col-6 lg:col-2">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
                                 <p-dropdown [options]="usersList" optionLabel="userName"
                                     optionValue="userName" placeholder="Select Users"
                                     formControlName="userName">
                                 </p-dropdown>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                   
                     <!-- <div class="col-12 md:col-6 lg:col-2">
                         <div class="field-wrapper">
                             <div class="input-wrapper">
@@ -65,18 +92,18 @@
 
        <div>
     <app-institute-divider></app-institute-divider>
-    <p-table [value]="candidateDetails"  [lazy]="true">
+    <p-table [value]="paymentDetails"  [lazy]="true">
         <ng-template pTemplate="header">
             <tr>
-                <th>CANDIDATE DETAILS</th>
+                <th>STUDENTS DETAILS</th>
                 <th>COURSE DETAILS</th>
                 <th>PAYMENT DETAILS</th>
-                <th>STATUS</th>
-                <th style="width: 15%;">MODIFIED</th>
+                <!-- <th>STATUS</th> -->
+                <!-- <th style="width: 15%;">MODIFIED</th> -->
                 <th>ACTION</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-candidate>
+        <ng-template pTemplate="body" let-payment>
             <tr *ngIf="!dataLoaded">
                 <td>
                     <p-skeleton styleClass="mb-2" height="1rem"></p-skeleton>
@@ -92,14 +119,14 @@
                     <p-skeleton styleClass="mb-2" height="1rem"></p-skeleton>
                     <p-skeleton height="1rem"></p-skeleton>
                 </td>
-                <td>
+                <!-- <td>
                     <p-skeleton height="1rem"></p-skeleton>
                 </td>
                 <td>
                     <p-skeleton styleClass="mb-2" height="1rem"></p-skeleton>
                     <p-skeleton styleClass="mb-2" height="1rem"></p-skeleton>
                     <p-skeleton height="1rem"></p-skeleton>
-                </td>
+                </td> -->
                 <td>
                     <p-skeleton shape="circle" size="3rem"></p-skeleton>
                 </td>
@@ -111,27 +138,27 @@
                 <td class="no-border">
                     <div class="applied-job">
                         <span>
-                            {{ candidate.name }}
+                            {{ payment.name }}
                         </span>
-                        <span>{{ candidate.mobileNumber }}</span>
-                        <span>{{ candidate.email }}</span>
+                        <span>{{ payment.mobileNumber }}</span>
+                        <!-- <span>{{ candidate.email }}</span> -->
                     </div>
                 </td>
                 <td class="no-border">
                     <div class="applied-job">
-                        <span>{{ candidate.courseName }}</span>
-                        <span>{{ candidate.mode }}</span>
-                        <span>{{ candidate.batchPreference }}</span>
+                        <span>{{ payment.courseName }}</span>
+                        <span>{{ payment.batchName }}</span>
+                        <span>{{ payment.batchPreference }}</span>
                     </div>
                 </td>
                 <td class="no-border">
                     <div class="applied-job">
-                        <span>COURSE FESS: {{ candidate.courseFees }}</span>
-                        <span>AMOUTN PAID: {{ candidate.amountPaid }}</span>
-                        <span>BALANCE AMOUNT: {{ candidate.balanceAmount }}</span>
+                        <span>COURSE FESS: {{ payment.courseFees }}</span>
+                        <span>AMOUTN PAID: {{ payment.amountPaid }}</span>
+                        <span>BALANCE AMOUNT: {{ payment.balanceAmount }}</span>
                     </div>
                 </td>
-                <td class="no-border">
+                <!-- <td class="no-border">
                     <p-tag [severity]="getSeverity(candidate.status)" [value]="candidate.status"></p-tag>
                 </td>
                 <td class="no-border">
@@ -140,10 +167,10 @@
                         <span>{{ candidate.modifiedDate | date : 'dd-MMM-yyyy' }}</span>
                         <span>{{ candidate.modifiedDate | date : 'hh:mm a' }}</span>
                     </div>
-                </td>
+                </td> -->
                 <td class="no-border">
                   
-                <span class="pi pi-pencil edit"  (click)="onClickOnEdit(candidate?.id)">
+                <span class="pi pi-pencil edit"  (click)="onClickOnEdit(payment?.candidateId)">
                    </span>
                 </td>
 
@@ -159,14 +186,14 @@
                     </div>
                 </td> -->
 
-                <td colspan="1" class="row-footer">
+                <!-- <td colspan="1" class="row-footer">
                     <div class="flex-start">
                         <label class="pr-2">CREATED USER:</label>
                         <div class="pr-2">
                             {{ candidate.createdUserName }}
                         </div>
                     </div>
-                </td>
+                </td> -->
             </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">

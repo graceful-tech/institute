@@ -1,0 +1,73 @@
+.applied-job {
+    display: flex;
+    flex-direction: column;
+}
+
+.applied-job span {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.flex-start label {
+    font-weight: 500;
+    color: #404040;
+}
+
+.pi-info-circle {
+    color: #2196F3;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.green {
+    color: #0f9640;
+    font-weight: 500;
+}
+
+.orange {
+    color: #dc5512;
+    font-weight: 500;
+}
+
+.red {
+    color: #d11111;
+    font-weight: 500;
+}
+
+.row-footer {
+    padding: 0.6rem 1rem !important;
+    background: #F9FAFB;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.row-footer label {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 200px;  
+}
+
+.action-icons {
+    display: flex;
+    flex-direction: Row;
+    align-items: flex-start;
+    gap: 0.5rem;  
+}
+
+.delete {
+    color: #EF2A2A;
+ }
+ .rounded-button {
+    border-radius: 5px;  
+    color: rgb(24, 23, 23);
+    padding: 0.3rem 1rem;
+ }

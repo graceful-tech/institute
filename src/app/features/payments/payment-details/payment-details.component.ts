@@ -35,10 +35,11 @@ candidates: Array<Candidate> = [];
   loaderImagePreview: any;
   showError: boolean = false;
   candidateDeleted:any;
-  candidateDetails: any;
+  paymentDetails: any;
   courseNameList: Array<ValueSet> = [];
   users: any;
   usersList: any;
+  dateFilterTypes: Array<ValueSet> = [];
 
   constructor(
     private fb: FormBuilder,
@@ -55,16 +56,16 @@ candidates: Array<Candidate> = [];
 
 
   ngOnInit() {
-  
     this.getBatchPreferenceList();
     this.getCourseNameList();
     this.getModeList();
+    this.getDateFilterList();
 
-    this.searchCandidates();
+    this.searchPayments();
     this.getAllUsers();
 
     this.searchForm.valueChanges.subscribe((response) => {
-      this.searchCandidates();
+      this.searchPayments();
     });
   }
 
@@ -73,9 +74,10 @@ candidates: Array<Candidate> = [];
       search: [''],
       mode: [''],
       batchPreference: [''],
-      userName:['']
-      
-      
+      filterType: ['Today'],
+      fromDate: [''],
+      toDate: [''],
+       
     });
   }
 
@@ -90,14 +92,14 @@ candidates: Array<Candidate> = [];
     });
   }
 
-   searchCandidates() {
+   searchPayments() {
     this.ngxLoader.start();
     this.dataLoaded = false;
     if (this.currentRequest) {
       this.currentRequest.unsubscribe();
     }
 
-    const route = 'candidate/search';
+    const route = 'payment/search';
     const payload = this.searchForm.value;
 
   
@@ -108,7 +110,7 @@ candidates: Array<Candidate> = [];
 
     this.currentRequest = this.api.retrieve(route, payload).subscribe({
       next: (response) => {
-        this.candidateDetails = response?.results;
+        this.paymentDetails = response?.results;
         this.totalRecords = response?.totalRecords;
         this.dataLoaded = true;
         this.ngxLoader.stop();
@@ -123,11 +125,11 @@ candidates: Array<Candidate> = [];
   onPageChange(event: any) {
     this.currentPage = event.page + 1;
     this.maxLimitPerPage = event.rows;
-    this.searchCandidates();
+    this.searchPayments();
   }
 
   onClickOnEdit(candidateId:any){
-  this.router.navigate(['/candidates/edit', candidateId]);
+  this.router.navigate(['/payment-details/edit', candidateId]);
   }
 
    getSeverity(status: string) {
@@ -202,6 +204,16 @@ candidates: Array<Candidate> = [];
     this.api.get(route).subscribe({
       next: (response) => {
         this.usersList = response as any
+      },
+    });
+  }
+
+  getDateFilterList() {
+    const route = 'value-sets/search-by-code';
+    const postData = { valueSetCode: 'DATE_FILTER' };
+    this.api.retrieve(route, postData).subscribe({
+      next: (response) => {
+        this.dateFilterTypes = response;
       },
     });
   }

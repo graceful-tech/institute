@@ -1,5 +1,13 @@
  
-<app-institute-divider></app-institute-divider>
+<div class="wrapper">
+    <div class="heading">
+        <span>
+            <i class="pi pi-arrow-left back-icon" routerLink="/payment-details"></i>
+            Edit Student
+        </span>
+    </div>
+    <div class="profile-wrapper">
+
 <form [formGroup]="paymentForm">
   <div class="section-heading">Payemnt Details</div>
   <div class="grid">
@@ -99,6 +107,37 @@
 
   </div>
 
-  <app-institute-divider></app-institute-divider>
-    
+  <div class="flex-end mt-3">
+            <p-button label="Update" (onClick)="savepayment()" >
+            </p-button>
+   </div>   
 </form>
+
+   <p-table [value]="paymentHistory"  [lazy]="true">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>COURSE FEES</th>
+                <th>AMOUNT PAID</th>
+                <th>PAYMENT MODE</th>
+                <th>BALANCE</th>
+                <th>PAYMENT DATE</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-payment>
+            <tr>
+            <td>{{payment.historyCourseFees}}</td>
+            <td>{{payment.historyAmountPaid}}</td>
+            <td>{{payment.historyPaymentMode}}</td>
+            <td>{{payment.historyBalanceAmount}}</td>
+            <td>{{payment.historyPaidDate}}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">No records found.</td>
+            </tr>
+        </ng-template>
+   </p-table>
+</div>
+

@@ -117,7 +117,7 @@
     <p-table [value]="candidateDetails"  [lazy]="true">
         <ng-template pTemplate="header">
             <tr>
-                <th>CANDIDATE DETAILS</th>
+                <th>STUDENTS DETAILS</th>
                 <th>COURSE DETAILS</th>
                 <th>PAYMENT DETAILS</th>
                 <th>STATUS</th>
@@ -177,7 +177,7 @@
                     <div class="applied-job">
                         <span>COURSE FESS: {{ candidate.courseFees }}</span>
                         <span>AMOUTN PAID: {{ candidate.amountPaid }}</span>
-                        <span>BALANCE AMOUNT: {{ candidate.courseFees - candidate.amountPaid }}</span>
+                        <span>BALANCE AMOUNT: {{ candidate.courseFees - candidate.discount - candidate.amountPaid }}</span>
                     </div>
                 </td>
                 <td class="no-border">
@@ -230,7 +230,7 @@
                     <div class="flex-start">
                         <label class="pr-2">DISCOUNT:</label>
                         <div class="pr-2">
-                            {{ candidate.discoutn }}
+                            {{ candidate.discount }}
                         </div>
                     </div>
                 </td>

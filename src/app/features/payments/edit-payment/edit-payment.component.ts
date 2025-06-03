@@ -8,15 +8,16 @@ import { DatePipe } from '@angular/common';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Course } from '../../../models/candidates/couse.model';
 import { Payment } from '../../../models/payments/payment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-payment',
+  selector: 'app-edit-payment',
   standalone: false,
-  templateUrl: './payment.component.html',
-  styleUrl: './payment.component.css'
+  templateUrl: './edit-payment.component.html',
+  styleUrl: './edit-payment.component.css'
 })
-export class PaymentComponent {
-  @Output() savedPayment = new EventEmitter();
+export class EditPaymentComponent {
+@Output() savedPayment = new EventEmitter();
 
   paymentForm!: FormGroup;
   statusList: any;
@@ -26,6 +27,8 @@ export class PaymentComponent {
   candidateId:any;
   paymentModeList: Array<ValueSet> = [];
   paymentId:any;
+  paymentHistory: any;
+  payments: any;
 
 
   constructor(
@@ -34,7 +37,13 @@ export class PaymentComponent {
     private gs: GlobalService,
     private datePipe: DatePipe,
     private dialog: DialogService,
-  ) {}
+    private route: ActivatedRoute
+  ) {
+     this.route.paramMap.subscribe(param => {
+      this.gs.setCandidateId(param.get('id'));
+      this.candidateId = param.get('id');
+    });
+  }
 
   ngOnInit() {
     this.createPaymentForm();
@@ -94,19 +103,17 @@ export class PaymentComponent {
         'yyyy-MM-dd'
       );
     }
-
-    
-
     payload['candidateId'] = this.candidateId;
 
     this.api.create(route, payload).subscribe({
       next: (response: any) => {
-        this.courseId = response;
+        this.payments = response;
         this.savedPayment.emit({
           response: 'success',
           courseId: this.courseId,
         });
          
+        this.getPaymentHistory(response)
       },
       error: (error) => {
         this.gs.showMessage(error.error?.status, error.error?.message);
@@ -137,6 +144,8 @@ export class PaymentComponent {
           const payment = response as Payment;
           this.paymentId = payment.id;
           this.patchPaymentForm(payment);
+
+          this.getPaymentHistory(this.paymentId);
       
          },
       });
@@ -158,5 +167,15 @@ calculateBalance() {
   this.paymentForm.get('balanceAmount')!.setValue(balance >= 0 ? balance : 0, { emitEvent: false });
 }
 
-}
+ getPaymentHistory(id:any){
+  if (this.candidateId) {
+      const route = `payment/history/${id}`;
+      this.api.get(route).subscribe({
+        next: (response) => {
+          this.paymentHistory = response as any;
+         },
+      });
+    }
+ }
 
+}
