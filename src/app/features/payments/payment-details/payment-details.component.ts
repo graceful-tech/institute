@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
+import { Candidate } from '../../../models/candidates/candidate.model';
+import { ValueSet } from '../../../models/common/value-set.model';
+import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiService } from '../../../services/api.service';
 import { GlobalService } from '../../../services/global.service';
 import { Router } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { Candidate } from '../../../models/candidates/candidate.model';
-import { Subscription } from 'rxjs';
-import { ValueSet } from '../../../models/common/value-set.model';
 
 @Component({
-  selector: 'app-list-candidates',
+  selector: 'app-payment-details',
   standalone: false,
-  templateUrl: './list-candidates.component.html',
-  styleUrl: './list-candidates.component.css'
+  templateUrl: './payment-details.component.html',
+  styleUrl: './payment-details.component.css'
 })
-export class ListCandidatesComponent {
-  candidates: Array<Candidate> = [];
+export class PaymentDetailsComponent {
+
+candidates: Array<Candidate> = [];
   batchPreferenceList: Array<ValueSet> = [];
   modeList: Array<ValueSet> = [];
   currentPage: number = 1;
@@ -38,7 +39,6 @@ export class ListCandidatesComponent {
   courseNameList: Array<ValueSet> = [];
   users: any;
   usersList: any;
-  statusList:any;
 
   constructor(
     private fb: FormBuilder,
@@ -59,7 +59,6 @@ export class ListCandidatesComponent {
     this.getBatchPreferenceList();
     this.getCourseNameList();
     this.getModeList();
-    this.getStatus();
 
     this.searchCandidates();
     this.getAllUsers();
@@ -74,8 +73,7 @@ export class ListCandidatesComponent {
       search: [''],
       mode: [''],
       batchPreference: [''],
-      userName:[''],
-      status:[''],
+      userName:['']
       
       
     });
@@ -207,18 +205,4 @@ export class ListCandidatesComponent {
       },
     });
   }
-
-     getStatus() {
-      const route = 'status';
-      this.api.get(route).subscribe({
-        next: (response) => {
-          this.statusList = response as any;
-         },
-      });
-  }
-
-  reset(){
-    this.searchForm.reset();
-  }
-
 }

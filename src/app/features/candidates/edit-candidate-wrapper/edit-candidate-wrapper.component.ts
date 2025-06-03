@@ -49,11 +49,14 @@ export class EditCandidateWrapperComponent {
   
 
   saveCandidate() {
-    if (this.candidateDetails.candidateForm.valid) {
+   if (this.candidateDetails.candidateForm.valid && this.candidateCourse.courseForm.valid &&
+       this.paymentDetails.paymentForm.valid) {
       this.dataLoaded = false;
       this.candidateDetails.updateCandidate();
     } else {
-      this.candidateDetails.showError = true;
+     this.candidateDetails.showError = true;
+      this.candidateCourse.showError = true;
+      this.paymentDetails.showError = true;
     }
   }
 
@@ -61,15 +64,20 @@ export class EditCandidateWrapperComponent {
      this.dataLoaded = true;
   if (event.response == 'success') {
     
-    this.dataLoaded = true;
+    this.dataLoaded = false;
+
     this.candidateCourse.candidateId = event.candidateId;
     this.candidateCourse.saveCourse();
 
-    this.candidateCourse.candidateId = event.candidateId;
+    this.paymentDetails.candidateId = event.candidateId;
     this.paymentDetails.savepayment();
-
-      this.gs.showMessage('success', 'Candidate details Updated successfully.');
+      
+    this.dataLoaded = true;
+      
+    this.gs.showMessage('success', 'Candidate details Updated successfully.');
+      
     }
+    this.dataLoaded = true;
   }
 
 

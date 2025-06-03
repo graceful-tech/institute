@@ -62,8 +62,9 @@ export class CreateUserComponent {
         next: response => {
           this.loadingFlag = false;
           const customer = response as any;
-          this.gs.openLogin('Success', 'Your Acoount Created Successfully');
-          console.log(customer);
+          // this.gs.openLogin('Success', 'Your Acoount Created Successfully');
+          // console.log(customer);
+          this.gs.showMessage('success','User Create Successfully');
         },
         error: (error) => {
           this.error = error.error?.message;

@@ -11,7 +11,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 
-   {
+  {
     path: 'login',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
@@ -25,6 +25,12 @@ const routes: Routes = [
     path: 'view-user',
     loadChildren: () => import('./features/users/users.module').then((m) => m.UsersModule),
   },
+
+  {
+    path: 'payment-details',
+    loadChildren: () => import('./features/payments/payment.module').then((m) => m.PaymentModule),
+  },
+
 ];
 
 @NgModule({

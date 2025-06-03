@@ -1,34 +1,13 @@
 <div class="wrapper">
     <div class="heading">
-        <span>My Students <span class="available">
+        <span>View Payments<span class="available">
             <!-- (Available: {{ listApplication?.totalRecords }}) -->
         </span></span>
     </div>
     <div class="profile-wrapper">
         <form [formGroup]="searchForm">
             <div class="search-wrapper">
-                <!-- <div class="checkbox-flex mb-2">
-                    <div>
-                        <p-checkbox class="checkbox" [binary]="true" label="Show Candidates with Resume"
-                            formControlName="showCandidatesWithResumeFlag">
-                        </p-checkbox>
-                        <p-checkbox class="checkbox" [binary]="true" label="Un-Followed Candidates"
-                            formControlName="unfollowedCandidatesFlag">
-                        </p-checkbox>
-                    </div>
-                    <div>
-                        <p-button class="mr-1" label="Send To Client" styleClass="p-button-primary"
-                            (onClick)="openSendEmailModal()"
-                            [disabled]="listApplication?.selectedApplications?.length == 0">
-                        </p-button>
-                        <p-button class="mx-2" label="Export" styleClass="p-button-primary"
-                            (onClick)="checkExportLimit()">
-                        </p-button>
-                        <p-button class="mx-1" label="Reset" styleClass="p-button-secondary"
-                            (onClick)="resetFilters()">
-                        </p-button>
-                    </div>
-                </div> -->
+                
                 <div class="grid grid-nogutter">
                     <div class="col-12 md:col-6 lg:col-2">
                         <div class="field-wrapper">
@@ -69,17 +48,6 @@
                             </div>
                         </div>
                     </div>
-
-                     <div class="col-12 md:col-6 lg:col-2">
-                        <div class="field-wrapper">
-                            <div class="input-wrapper">
-                                <p-dropdown [options]="statusList" optionLabel="statusName"
-                                    optionValue="statusName" placeholder="Select By Status"
-                                    formControlName="status">
-                                </p-dropdown>
-                            </div>
-                        </div>
-                    </div>
                     <!-- <div class="col-12 md:col-6 lg:col-2">
                         <div class="field-wrapper">
                             <div class="input-wrapper">
@@ -89,24 +57,7 @@
                         </div>
                     </div>   -->
 
-                    <div>
-                        <div class="field-wrapper">
-                            <div class="input-wrapper"  >
-                                <p-button class="ml-5" label="Create" styleClass="p-button-primary"
-                                 (onClick)="createCandidate()">
-                                </p-button>
-                            </div>
-                        </div>
-                    </div> 
-
-                    <div>
-                        <div class="field-wrapper">
-                            <div class="input-wrapper">
-                                <p-button  label="Reset" styleClass="p-button-secondary" (onClick)="reset()">
-                                </p-button>
-                            </div>
-                        </div>
-                    </div> 
+                     
                 </div>
             </div>
         </form>
@@ -177,7 +128,7 @@
                     <div class="applied-job">
                         <span>COURSE FESS: {{ candidate.courseFees }}</span>
                         <span>AMOUTN PAID: {{ candidate.amountPaid }}</span>
-                        <span>BALANCE AMOUNT: {{ candidate.courseFees - candidate.amountPaid }}</span>
+                        <span>BALANCE AMOUNT: {{ candidate.balanceAmount }}</span>
                     </div>
                 </td>
                 <td class="no-border">
@@ -213,24 +164,6 @@
                         <label class="pr-2">CREATED USER:</label>
                         <div class="pr-2">
                             {{ candidate.createdUserName }}
-                        </div>
-                    </div>
-                </td>
-
-                <td colspan="1" class="row-footer">
-                    <!-- <div class="flex-start">
-                        <label class="pr-2">CREATED USER:</label>
-                        <div class="pr-2">
-                            {{ candidate.createdUserName }}
-                        </div>
-                    </div> -->
-                </td>
-
-                <td colspan="1" class="row-footer">
-                    <div class="flex-start">
-                        <label class="pr-2">DISCOUNT:</label>
-                        <div class="pr-2">
-                            {{ candidate.discoutn }}
                         </div>
                     </div>
                 </td>

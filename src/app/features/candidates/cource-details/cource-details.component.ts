@@ -251,8 +251,6 @@ export class CourceDetailsComponent {
       this.api.get(route).subscribe({
         next: (response) => {
           this.statusList = response as any;
-          
-      
          },
       });
 
