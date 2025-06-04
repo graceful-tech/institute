@@ -107,6 +107,33 @@
                             </div>
                         </div>
                     </div> 
+
+                    
+                    <div class="col-12 md:col-6 lg:col-2">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
+                                <p-dropdown [options]="dateFilterTypes" optionLabel="displayValue"
+                                    optionValue="dataValue" placeholder="Select Date Filter"
+                                    formControlName="filterType">
+                                </p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-2" *ngIf="searchForm.value.filterType == 'Custom'">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
+                                <p-calendar formControlName="fromDate" placeholder="Select From Date">
+                                </p-calendar>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-2" *ngIf="searchForm.value.filterType == 'Custom'">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
+                                <p-calendar formControlName="toDate" placeholder="Select To Date"></p-calendar>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>

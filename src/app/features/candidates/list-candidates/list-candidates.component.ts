@@ -39,6 +39,7 @@ export class ListCandidatesComponent {
   users: any;
   usersList: any;
   statusList:any;
+  dateFilterTypes: Array<ValueSet> = [];
 
   constructor(
     private fb: FormBuilder,
@@ -60,6 +61,7 @@ export class ListCandidatesComponent {
     this.getCourseNameList();
     this.getModeList();
     this.getStatus();
+    this.getDateFilterList();
 
     this.searchCandidates();
     this.getAllUsers();
@@ -76,6 +78,9 @@ export class ListCandidatesComponent {
       batchPreference: [''],
       userName:[''],
       status:[''],
+      filterType: [''],
+      fromDate: [''],
+      toDate: [''],
       
       
     });
@@ -219,6 +224,16 @@ export class ListCandidatesComponent {
 
   reset(){
     this.searchForm.reset();
+  }
+
+  getDateFilterList() {
+    const route = 'value-sets/search-by-code';
+    const postData = { valueSetCode: 'DATE_FILTER' };
+    this.api.retrieve(route, postData).subscribe({
+      next: (response) => {
+        this.dateFilterTypes = response;
+      },
+    });
   }
 
 }

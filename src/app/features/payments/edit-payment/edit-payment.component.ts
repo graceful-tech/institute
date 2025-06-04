@@ -8,7 +8,7 @@ import { DatePipe } from '@angular/common';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Course } from '../../../models/candidates/couse.model';
 import { Payment } from '../../../models/payments/payment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-payment',
@@ -29,6 +29,8 @@ export class EditPaymentComponent {
   paymentId:any;
   paymentHistory: any;
   payments: any;
+  balanceAmount: any;
+  amountPaid: any;
 
 
   constructor(
@@ -37,7 +39,8 @@ export class EditPaymentComponent {
     private gs: GlobalService,
     private datePipe: DatePipe,
     private dialog: DialogService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
      this.route.paramMap.subscribe(param => {
       this.gs.setCandidateId(param.get('id'));
@@ -53,6 +56,7 @@ export class EditPaymentComponent {
       this.paymentForm.valueChanges.subscribe((response) => {
       this.handleBalanceAmountCalculation();
     })
+    this.handleBalanceAmountCalculation();
    
   }
 
@@ -79,7 +83,7 @@ export class EditPaymentComponent {
       courseFees:payment?.courseFees,
       discount:payment?.discount,
       paidDate:paidDate,
-      amountPaid:payment?.amountPaid,
+      // amountPaid:payment?.amountPaid,
       paymentMode:payment?.paymentMode,
       balanceAmount:payment?.balanceAmount,
        
@@ -108,12 +112,8 @@ export class EditPaymentComponent {
     this.api.create(route, payload).subscribe({
       next: (response: any) => {
         this.payments = response;
-        this.savedPayment.emit({
-          response: 'success',
-          courseId: this.courseId,
-        });
-         
-        this.getPaymentHistory(response)
+        this.getPaymentHistory(response);
+         this.gs.showMessage('success','Payment updated successfully');
       },
       error: (error) => {
         this.gs.showMessage(error.error?.status, error.error?.message);
@@ -143,6 +143,7 @@ export class EditPaymentComponent {
         next: (response) => {
           const payment = response as Payment;
           this.paymentId = payment.id;
+          this.amountPaid =payment.amountPaid;
           this.patchPaymentForm(payment);
 
           this.getPaymentHistory(this.paymentId);
@@ -163,7 +164,9 @@ calculateBalance() {
   const discount = Number(this.paymentForm.get('discount')!.value || 0);
   const amountPaid = Number(this.paymentForm.get('amountPaid')!.value || 0);
 
-  const balance = courseFees - discount - amountPaid;
+
+  const balance = courseFees - discount - amountPaid - this.amountPaid;
+    
   this.paymentForm.get('balanceAmount')!.setValue(balance >= 0 ? balance : 0, { emitEvent: false });
 }
 
@@ -174,8 +177,11 @@ calculateBalance() {
         next: (response) => {
           this.paymentHistory = response as any;
          },
+          error: (error) => {
+        },
       });
     }
+    
  }
 
 }

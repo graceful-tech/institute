@@ -1,0 +1,18 @@
+.candidate-name {
+    color: #0488f4;
+}
+
+.client,
+.date,
+.user {
+    color: #74788d;
+}
+
+.comment {
+    font-style: oblique;
+}
+
+.edit {
+    cursor: pointer;
+    color: #0985eb;
+}

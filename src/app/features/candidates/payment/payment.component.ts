@@ -94,18 +94,12 @@ export class PaymentComponent {
         'yyyy-MM-dd'
       );
     }
-
-    
-
     payload['candidateId'] = this.candidateId;
 
     this.api.create(route, payload).subscribe({
       next: (response: any) => {
-        this.courseId = response;
-        this.savedPayment.emit({
-          response: 'success',
-          courseId: this.courseId,
-        });
+        this.paymentId = response;
+        
          
       },
       error: (error) => {

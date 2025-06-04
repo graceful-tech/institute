@@ -58,7 +58,7 @@ export class LoginComponent {
           this.loadingFlag = false;
           localStorage.setItem('userName', user.userName.toString());
           localStorage.setItem('userId', user.id.toString());
-          this.router.navigate(['/candidates']);
+          this.router.navigate(['/dashboard']);
           // this.gs.loadData();
 
         },

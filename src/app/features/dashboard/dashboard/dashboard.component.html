@@ -1,14 +1,72 @@
- <div class="grid">
-        <div class="col-12 lg:col-3 md:col-6 mb-1">
-         <app-dashboard-payment></app-dashboard-payment>
+ .
+ <div class="wrapper">
+    <div class="date-wrapper">
+        <div class="heading">
+            Dashboard
         </div>
-        <div class="col-12 lg:col-3 md:col-6 mb-1">
+           <div style="flex: 1;">
+            <form [formGroup]="searchForm">
+                <div class="grid grid-nogutter">   
+                    <div class="col-12 md:col-6 lg:col-2">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
+                                <p-dropdown appendTo="body" [options]="usersList" optionLabel="userName" optionValue="userName"
+                                    formControlName="userName" placeholder="Select User">
+                                </p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-2">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
+                                <p-dropdown [options]="dateFilterTypes" optionLabel="displayValue"
+                                    optionValue="dataValue" placeholder="Select Date Filter"
+                                    formControlName="filterType">
+                                </p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-2" *ngIf="searchForm.value.filterType == 'Custom'">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
+                                <p-calendar formControlName="fromDate" placeholder="Select From Date">
+                                </p-calendar>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-2" *ngIf="searchForm.value.filterType == 'Custom'">
+                        <div class="field-wrapper">
+                            <div class="input-wrapper">
+                                <p-calendar formControlName="toDate" placeholder="Select To Date"></p-calendar>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-2">
+                        <div class="field-wrapper mt-1">
+                            <div>
+                                <p-button label="Reset" styleClass="p-button-secondary" (onClick)="reset()">
+                                </p-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+     </div>
+    <div class="grid mt-3">
+        <div class="col-12 lg:col-4 md:col-6 mb-1">
+         <app-dashboard-payment [userName]="searchForm.value.userName" [filterType]="searchForm.value.filterType"
+            [fromDate]="searchForm.value.fromDate" [toDate]="searchForm.value.toDate"></app-dashboard-payment>
+        </div>
+        <!-- <div class="col-12 lg:col-3 md:col-6 mb-1">
             <app-dashboard-user-report></app-dashboard-user-report>
+        </div> -->
+        <div class="col-12 lg:col-4 md:col-6 ">
+        <app-dashboard-comments [userName]="searchForm.value.userName" [filterType]="searchForm.value.filterType"
+            [fromDate]="searchForm.value.fromDate" [toDate]="searchForm.value.toDate"></app-dashboard-comments>
         </div>
-        <div class="col-12 lg:col-3 md:col-6 ">
-      <app-dashboard-comments></app-dashboard-comments>
-        </div>
-        <div class="col-12 lg:col-3 md:col-6 ">
+        <!-- <div class="col-12 lg:col-3 md:col-6 ">
             <app-dashboard-candidate></app-dashboard-candidate>
-        </div>
+        </div> -->
    </div>
+</div>

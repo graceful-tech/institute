@@ -74,7 +74,7 @@ candidates: Array<Candidate> = [];
       search: [''],
       mode: [''],
       batchPreference: [''],
-      filterType: ['Today'],
+      filterType: [''],
       fromDate: [''],
       toDate: [''],
        

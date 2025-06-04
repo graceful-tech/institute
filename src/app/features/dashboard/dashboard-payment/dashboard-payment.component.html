@@ -1,3 +1,39 @@
-<div style="background-color: red ; padding: 50px;">
+<div class="card h-100">
+    <div class="card-heading">
+        Payment Report
+    </div>
+    <div class="grid ">
+        <div class="col-12">
+            <div class="dashboard border-right-1 border-bottom-1 dashboard-border-color p-1 border-top-1 border-left-1">
+                <div class="label" style="font-size: medium;">
+                   <span>OVERALL PAID AMOUNT</span> 
+                </div>
+                <div class="value" style="color: hsl(0, 0%, 5%); cursor: pointer;"
+                     
+                    onmouseout="this.style.color='black';">
+                    <span *ngIf="!paymentList[0]?.amountPaid">0</span>
+                    <span *ngIf="paymentList[0]?.amountPaid">{{ paymentList[0]?.amountPaid |
+                            currency : 'INR'}}</span>
+                </div>
 
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+            <div class="dashboard border-right-1 border-bottom-1 dashboard-border-color p-1 border-top-1 border-left-1">
+                <div class="label" style="font-size: medium;">
+                   <span>BALANCE AMOUNT</span> 
+                </div>
+                <div class="value" style="color: hsl(0, 0%, 5%); cursor: pointer;"
+                     
+                    onmouseout="this.style.color='black';">
+                    <span *ngIf="!paymentList[0]?.balanceAmount">0</span>
+                    <span *ngIf="paymentList[0]?.balanceAmount">{{ paymentList[0]?.balanceAmount |
+                            currency : 'INR'}}</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+     
+     
 </div>

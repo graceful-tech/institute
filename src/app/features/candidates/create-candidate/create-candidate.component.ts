@@ -6,6 +6,7 @@ import { GlobalService } from '../../../services/global.service';
 import { DatePipe } from '@angular/common';
 import { CourceDetailsComponent } from '../cource-details/cource-details.component';
 import { PaymentComponent } from '../payment/payment.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-candidate',
@@ -23,7 +24,7 @@ export class CreateCandidateComponent {
   dataLoaded: boolean = true;
   candidateId: any;
 
-  constructor(private api: ApiService, private gs: GlobalService, private datePipe: DatePipe) { }
+  constructor(private api: ApiService, private gs: GlobalService, private router: Router, private datePipe: DatePipe) { }
 
   ngOnInit() {
     
@@ -36,14 +37,12 @@ export class CreateCandidateComponent {
   
 
   saveCandidate() {
-    if (this.candidateDetails.candidateForm.valid && this.candidateCourse.courseForm.valid &&
-       this.paymentDetails.paymentForm.valid) {
+    if (this.candidateDetails.candidateForm.valid && this.candidateCourse.courseForm.valid) {
       this.dataLoaded = false;
       this.candidateDetails.saveCandidate();
     } else {
       this.candidateDetails.showError = true;
       this.candidateCourse.showError = true;
-      this.paymentDetails.showError = true;
     }
   }
 
@@ -51,10 +50,10 @@ export class CreateCandidateComponent {
     this.dataLoaded = true;
     if(event.response == 'success'){
       this.dataLoaded = false;
-      // if (this.candidateCourse.courseForm.valid) {
+       
       this.candidateCourse.candidateId = event.candidateId;
       this.candidateCourse.saveCourse();
-      //  }
+     
       this.paymentDetails.candidateId = event.candidateId;
       this.paymentDetails.savepayment();
       
@@ -67,15 +66,11 @@ export class CreateCandidateComponent {
        
        this.gs.showMessage('success', 'Candidate details saved successfully.');
        this.dataLoaded = true;
+
+        this.router.navigate(['/candidates']);
   }
    this.dataLoaded = true;
   }
 
-  canDeactivate(){
-    return new Promise((resolve, Reject) =>{
-
-      resolve(confirm('Are you sure want to leave this page ?'));
-
-    })
-  }
+   
 }
