@@ -65,6 +65,7 @@ export class CreateUserComponent {
           const customer = response as any;
           // this.gs.openLogin('Success', 'Your Acoount Created Successfully');
           // console.log(customer);
+          this.reset();
           this.gs.showMessage('success', 'User Create Successfully');
         },
         error: (error) => {
@@ -124,6 +125,10 @@ export class CreateUserComponent {
         this.patchUserForm(user);
       }
     });
+  }
+
+  reset(){
+    this.createAccountForm.reset();
   }
 
 }
