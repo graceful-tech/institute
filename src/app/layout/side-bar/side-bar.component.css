@@ -129,3 +129,8 @@ img {
     width: 25px; 
     height: 25px; 
 }
+
+.icon {
+       font-size: 1.9rem;
+     color: #474749;
+    }
