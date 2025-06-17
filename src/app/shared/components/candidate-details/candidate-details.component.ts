@@ -124,7 +124,7 @@ export class CandidateDetailsComponent {
       nationality: candidate?.nationality,
       gender: candidate?.gender,
       languagesKnown: candidate?.languagesKnown,
-      parentContact:candidate?.languagesKnown,
+      parentContact:candidate?.parentContact,
       address:candidate?.address,
       location:candidate?.location,
       maritalStatus:candidate?.maritalStatus,
